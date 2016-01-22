@@ -1,0 +1,10 @@
+
+dependencies {
+  // ...
+  compile 'com.getpebble:pebblekit:3.0.0'
+}
+
+repositories {
+  mavenCentral()
+  maven { url "https://oss.sonatype.org/content/groups/public/" }
+}
