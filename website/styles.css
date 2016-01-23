@@ -11,6 +11,33 @@ html, body {
     width: 100%;
 }
 
+#phi {
+    background: url(images/triangle_background.png) no-repeat center center fixed;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#fea {
+    
+}
+
+#get {
+    background: url(images/purple-dotted-background.jpg) no-repeat center center fixed;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 
 /* navbar */
