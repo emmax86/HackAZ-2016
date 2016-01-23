@@ -18,7 +18,7 @@
 
     <Space
         android:layout_width="fill_parent"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/settings_custom_actionbar"
         android:id="@+id/space1"/>
 
@@ -61,7 +61,7 @@
     <com.bramblellc.myapplication.layouts.TextViewWithTypeface
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="EDIT EMERGENCY CONTACT"
+        android:text="EDIT EMERGENCY PHONE CONTACT"
         android:paddingTop="15dp"
         android:textSize="30sp"
         android:textColor="@color/white"
@@ -88,7 +88,7 @@
     <com.bramblellc.myapplication.layouts.TextViewWithTypeface
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="EDIT EMERGENCY CONTACT"
+        android:text="LOGOUT"
         android:paddingTop="15dp"
         android:textSize="30sp"
         android:textColor="@color/white"
