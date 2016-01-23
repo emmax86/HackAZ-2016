@@ -1,3 +1,18 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* paralax shit */
+.para-section {
+    padding: 50px 0;
+}
+.para-section {
+    width: 100%;
+}
+
+
+
 /* navbar */
 .navbar-default {
     background-color: #FFFFFF;
