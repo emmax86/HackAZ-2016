@@ -24,7 +24,10 @@ class User(object):
         user_dict = redis_db.hmget(username, ["password_hash", "phone_number"])
         fetched_user = User()
         fetched_user.username = username
-        fetched_user.password_hash = user_dict["password_hash"]
-        fetched_user.phone_number = user_dict["phone_number"]
-        return fetched_user
+        fetched_user.password_hash = user_dict[0]
+        fetched_user.phone_number = user_dict[1]
+        if not fetched_user.password_hash or not fetched_user.phone_number:
+            return None
+        else:
+            return fetched_user
 
