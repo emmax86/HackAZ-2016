@@ -25,7 +25,8 @@ def sign_up():
                 new_user.phone_number = obj["phone_number"]
                 new_user.set_password(obj["password"])
                 new_user.write_to_db()
-                return new_user.username + " " + new_user.password_hash + " " + new_user.phone_number
+                dump = {"token": generate_token(new_user.username, datetime.now())}
+                return json.dumps(dump)
             else:
                 return "You are already a registered user", 401
         else:
@@ -41,7 +42,8 @@ def log_in():
         if obj and obj.get("username") and obj.get("password"):
             user = User.get_from_db(obj["username"])
             if user and user.verify_password(obj["password"]):
-                return generate_token(user.username, datetime.now())
+                dump = {"token": generate_token(user.username, datetime.now())}
+                return json.dumps(dump)
             else:
                 return "Invalid username/password combo", 401
         else:
