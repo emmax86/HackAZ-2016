@@ -1,4 +1,5 @@
 from __init__ import app
+from flask import request
 from models import *
 
 
@@ -9,12 +10,26 @@ def hello():
 
 @app.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
-    return "WOLOL"
+    if request.method == "GET":
+        return "WOLOL"
+    elif request.method == "POST":
+        obj = request.get_json(force=True)
+        if obj and obj.get("username") and obj.get("email") and obj.get("password"):
+            return obj["username"] + obj["email"] + obj["password"]
+        else:
+            return "DEAD"
 
 
 @app.route("/log_in", methods=["GET", "POST"])
 def log_in():
-    return "WOLOL"
+    if request.method == "GET":
+        return "WOLOL"
+    elif request.method == "POST":
+        obj = request.get_json(force=True)
+        if obj and obj.get("username") and obj.get("password"):
+            return obj["username"] + obj["password"]
+        else:
+            return "DEAD"
 
 
 @app.route("/create")
