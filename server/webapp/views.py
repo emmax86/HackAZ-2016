@@ -130,8 +130,3 @@ def stats():
 
     return json.dumps(res_data), 200
 
-
-@app.route("/create")
-def create():
-    db.create_all()
-    return "Created", 200
