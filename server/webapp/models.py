@@ -1,5 +1,7 @@
 from __init__ import redis_db
 from werkzeug.security import generate_password_hash, check_password_hash
+from os import urandom
+from base64 import b64encode
 
 
 class User(object):
@@ -8,6 +10,7 @@ class User(object):
         self.username = ""
         self.password_hash = ""
         self.phone_number = ""
+        self.secret_key = b64encode(urandom(64)).decode("utf-8")
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password, method="pbkdf2:sha256", salt_length=32)
@@ -16,17 +19,21 @@ class User(object):
         return check_password_hash(self.password_hash, password)
 
     def write_to_db(self):
-        user_dict = {"password_hash": self.password_hash, "phone_number": self.phone_number}
+        user_dict = {"password_hash": self.password_hash, "phone_number": self.phone_number, "secret_key": self.secret_key}
         redis_db.hmset(self.username, user_dict)
+
+    def deauthenticate(self):
+        self.secret_key = b64encode(urandom(64)).decode("utf-8")
 
     @classmethod
     def get_from_db(cls, username):
-        user_dict = redis_db.hmget(username, ["password_hash", "phone_number"])
+        user_dict = redis_db.hmget(username, ["password_hash", "phone_number", "secret_key"])
         fetched_user = User()
         fetched_user.username = username
         fetched_user.password_hash = user_dict[0]
         fetched_user.phone_number = user_dict[1]
-        if not fetched_user.password_hash or not fetched_user.phone_number:
+        fetched_user.secret_key = user_dict[2]
+        if not fetched_user.password_hash or not fetched_user.phone_number or not fetched_user.secret_key:
             return None
         else:
             return fetched_user

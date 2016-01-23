@@ -3,7 +3,7 @@ from util import verify_structure
 from flask import request, json
 from models import *
 from counters import get_counter
-from grumpy import generate_token, verify_session
+from grumpy import generate_token, verify_token
 from datetime import datetime
 
 
@@ -25,7 +25,7 @@ def sign_up():
                 new_user.phone_number = obj["phone_number"]
                 new_user.set_password(obj["password"])
                 new_user.write_to_db()
-                dump = {"token": generate_token(new_user.username, datetime.now())}
+                dump = {"token": generate_token(new_user.username, new_user.secret_key, datetime.now())}
                 return json.dumps(dump)
             else:
                 return "You are already a registered user", 401
@@ -42,7 +42,7 @@ def log_in():
         if obj and obj.get("username") and obj.get("password"):
             user = User.get_from_db(obj["username"])
             if user and user.verify_password(obj["password"]):
-                dump = {"token": generate_token(user.username, datetime.now())}
+                dump = {"token": generate_token(user.username, user.secret_key, datetime.now())}
                 return json.dumps(dump)
             else:
                 return "Invalid username/password combo", 401
@@ -50,18 +50,23 @@ def log_in():
             return "Malformed request", 401
 
 
-@app.route("/authtest", methods=["GET", "POST"])
-def authtest():
+@app.route("/log_out", methods=["GET", "POST"])
+def logout():
     if request.method == "GET":
         return "WOLOL"
     elif request.method == "POST":
         obj = request.get_json(force=True)
-        if obj and obj.get("token") and obj.get("username"):
-            if verify_session(obj["username"], obj["token"]):
+        if obj and obj.get("token"):
+            token_elements = obj.get("token").split(":")
+            user = User.get_from_db(token_elements[0])
+            if user and verify_token(user, obj.get("token")):
+                user.deauthenticate()
+                user.write_to_db()
                 return "Great success"
-            return "Great Failure", 401
+            else:
+                return "Malformed request", 401
         else:
-            return "Malformed request", 401
+            print "Malformed request", 401
 
 
 @app.route("/stats", methods=['POST'])
