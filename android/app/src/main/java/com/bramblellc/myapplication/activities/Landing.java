@@ -16,11 +16,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bramblellc.myapplication.R;
+import com.bramblellc.myapplication.data.Globals;
 import com.bramblellc.myapplication.sensor.GuardDogSensorListener;
 import com.bramblellc.myapplication.services.ActionConstants;
+import com.bramblellc.myapplication.services.AddContactService;
 import com.bramblellc.myapplication.services.AnalyzeService;
 import com.bramblellc.myapplication.services.DataService;
 
@@ -37,6 +40,10 @@ public class Landing extends Activity {
     private GuardDogSensorListener guardDogSensorListener;
     private BatchBroadcastReceiver batchBroadcastReceiver;
     private AnalyzeBroadcastReceiver analyzeBroadcastReceiver;
+
+    private IntentFilter addContactFilter;
+
+    private AddContactReceiver addContactReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,16 +141,13 @@ public class Landing extends Activity {
                 .input("phone number", "", new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(MaterialDialog dialog, CharSequence input) {
-                        SharedPreferences prefs = getSharedPreferences("GuardDog", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = getSharedPreferences("GuardDog", MODE_PRIVATE).edit();
-                        Set<String> dogSet = prefs.getStringSet("dogs", null);
-                        if (dogSet == null) {
-                            dogSet = new HashSet<>();
-                        }
-                        dogSet.add(input.toString());
-                        editor.putStringSet("dogs", dogSet);
-                        editor.apply();
-                        addAnotherDog();
+                        Intent addIntent = new Intent(Landing.this, AddContactService.class);
+                        addIntent.putExtra("phone_number", input.toString());
+                        addIntent.putExtra("token", Globals.getToken());
+                        addContactFilter = new IntentFilter(ActionConstants.ADD_CONTACT_ACTION);
+                        addContactReceiver = new AddContactReceiver();
+                        LocalBroadcastManager.getInstance(Landing.this).registerReceiver(addContactReceiver, addContactFilter);
+                        startService(addIntent);
                     }
                 }).show();
     }
@@ -360,6 +364,26 @@ public class Landing extends Activity {
             }
             else {
                 startListening();
+            }
+        }
+
+    }
+
+    private class AddContactReceiver extends BroadcastReceiver {
+
+        private AddContactReceiver() {
+
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            LocalBroadcastManager.getInstance(Landing.this).unregisterReceiver(this);
+            boolean successful = intent.getBooleanExtra("successful", false);
+            if (!successful) {
+                Toast.makeText(Landing.this, "An error occurred.", Toast.LENGTH_LONG).show();
+            }
+            else {
+                addAnotherDog();
             }
         }
 
