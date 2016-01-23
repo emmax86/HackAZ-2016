@@ -27,7 +27,8 @@ public class AccountPortal extends Activity {
     // SIGN UP PATH
     // when the sign up button is pressed
     public void toSignUpPressed(View v){
-        Intent intent = new Intent(this, Propoganda.class);
+        Intent intent = new Intent(this, Propoganda
+                .class);
         startActivity(intent);
         finish();
     }
