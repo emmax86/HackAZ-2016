@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingBottom="0dp"
+    android:paddingTop="0dp"
+    android:background="@color/color1"
+    android:imeOptions="actionDone">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/blur_background"
+        android:id="@+id/splashscreen_logo"
+        android:layout_above="@+id/toLogin"/>
+
+    <com.bramblellc.myapplication.layouts.ButtonWithTypeface
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:text="LOG IN"
+        android:textColor="@color/color1"
+        android:background="@color/color3"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/toSignUp"
+        android:id="@+id/toLogin"
+        android:onClick="toSignInPressed"/>
+
+    <com.bramblellc.myapplication.layouts.ButtonWithTypeface
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:text="SIGN UP"
+        android:textColor="@color/color1"
+        android:background="@color/color4"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/toSignUp"
+        android:onClick="toSignUpPressed"/>
+
+</RelativeLayout>

@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+    <color name="color1">#FCFFF5</color>
+    <color name="color2">#D1DBBD</color>
+    <color name="color3">#91AA9D</color>
+    <color name="color4">#3E606F</color>
+    <color name="color5">#193441</color>
+
+    <!-- Used colors (current color scheme) -->
+    <color name="primary_color">#8559D6</color>
+    <color name="secondary_color">#ffffff</color>
+    <color name="highlight_color">#dddddd</color>
+
+    <!-- text colors -->
+    <color name="title_text_color">#00AFBF</color>
+    <color name="primary_body_text_color">#000000</color>
+    <color name="secondary_body_text_color">#666666</color>
+
+    <!-- technical colors for items -->
+    <color name="white">#FFFFFF</color>
+    <color name="offwhite">#FDFDFD</color>
+    <color name="transparent">#00000000</color>
+    <color name="black">#000000</color>
+    <color name="darkerGray">#777777</color>
+    <color name="darkGray">#999999</color>
+    <color name="mediumGray">#c9c9c9</color>
+    <color name="lightGray">#f5f5f5</color>
+
+    <!-- test colors -->
+    <color name="mint">#9fffa9</color>
+    <color name="green">#62FF91</color>
+    <color name="darkGreen">#ff42ab61</color>
+    <color name="lightPurple">#B19BD9</color>
+    <color name="lightYellow">#FFFEAC</color>
+    <color name="darkPurple">#8559D6</color>
+    <color name="darkBlue">#00AFBF</color>
+    <color name="lightBlue">#B9EBFF</color>
+
+    <!-- crop activity colors -->
+    <color name="crop__button_text">#8559D6</color>
+
 </resources>

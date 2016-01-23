@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/list_activity_horizontal_margin"
+    android:paddingRight="@dimen/list_activity_horizontal_margin"
+    android:paddingBottom="@dimen/list_activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/color1"
+    tools:context="com.bramble.kickback.activities.SplashScreen"
+    android:imeOptions="actionDone">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:paddingLeft="@dimen/credentials_padding"
+        android:paddingRight="@dimen/credentials_padding"
+        android:layout_centerInParent="true">
+
+        <com.bramblellc.myapplication.layouts.TextViewWithTypeface
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="32dp"
+            android:paddingBottom="32dp"
+            android:text="SIGN UP"
+            android:textColor="@color/color5"
+            android:textSize="66sp"
+            android:id="@+id/signUpTitle"
+            android:layout_centerHorizontal="true"
+            />
+
+        <EditText
+            android:layout_width="@dimen/edittext_width"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextDesiredUsername"
+            android:background="@drawable/edit_text_basic"
+            android:paddingLeft="@dimen/edittext_padding"
+            android:paddingRight="@dimen/edittext_padding"
+            android:hint="username"
+            android:layout_below="@+id/signUpTitle"
+            android:inputType="text"
+            android:layout_centerHorizontal="true"/>
+
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/space_height"
+            android:layout_below="@+id/editTextDesiredUsername"
+            android:id="@+id/space_1"/>
+
+        <EditText
+            android:layout_width="@dimen/edittext_width"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextDesiredPassword"
+            android:background="@drawable/edit_text_basic"
+            android:paddingLeft="@dimen/edittext_padding"
+            android:paddingRight="@dimen/edittext_padding"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:layout_below="@+id/space_1"
+            android:layout_centerHorizontal="true"/>
+
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/space_height"
+            android:layout_below="@+id/editTextDesiredPassword"
+            android:id="@+id/space_2"/>
+
+
+
+        <EditText
+            android:layout_width="@dimen/edittext_width"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextPhoneNumber"
+            android:background="@drawable/edit_text_basic"
+            android:paddingLeft="@dimen/edittext_padding"
+            android:paddingRight="@dimen/edittext_padding"
+            android:maxLength="12"
+            android:hint="phone number"
+            android:inputType="phone"
+            android:layout_below="@+id/space_2"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <com.bramblellc.myapplication.layouts.ButtonWithTypeface
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:text="SIGN UP"
+        android:textColor="@color/color1"
+        android:background="@color/color4"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/buttonSignUp"
+        android:onClick="continueSignUpPressed"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="385dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/loading_space"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/loading_frame"
+        android:layout_below="@id/loading_space"/>
+
+</RelativeLayout>

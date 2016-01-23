@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="2dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color1">
+
+    <com.bramblellc.myapplication.layouts.CustomActionbar
+        android:id="@+id/settings_custom_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:text="Settings"
+        android:textColor="@color/color1"
+        app:backgroundType="1"
+        app:backButtonColor="blue"/>
+
+    <com.bramblellc.myapplication.layouts.FullWidthButton
+        android:id="@+id/my_dogs_full_width_button"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_below="@+id/settings_custom_actionbar"
+        android:text="My Guard Dogs"
+        app:lowerLine="true" />
+
+    <com.bramblellc.myapplication.layouts.FullWidthButton
+        android:id="@+id/phone_aid_input_full_width_button"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_below="@+id/my_dogs_full_width_button"
+        android:text="Phone protection services"
+        app:lowerLine="true" />
+
+    <com.bramblellc.myapplication.layouts.FullWidthButton
+        android:id="@+id/logout_full_width_button"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_below="@+id/phone_aid_input_full_width_button"
+        android:text="Log out"
+        app:lowerLine="true" />
+
+    <!--
+    <com.bramblellc.myapplication.layouts.FullWidthButton
+        android:id="@+id/test_full_width_button"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_below="@+id/logout_full_width_button"
+        android:text="TEST ENVIRONMENT"
+        app:lowerLine="true" />
+    -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/darkGray"
+        android:textSize="12sp"
+        android:text="Version 0.1.0 © Bramble LLC"/>
+
+</RelativeLayout>
