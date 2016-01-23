@@ -27,7 +27,7 @@
 
     <!-- edittext dimensions -->
     <dimen name="edittext_padding">4dp</dimen>
-    <dimen name="edittext_width">240dp</dimen>
+    <dimen name="edittext_width">300dp</dimen>
 
     <!-- fake actionbar dimensions-->
     <dimen name="action_bar_text_size">17sp</dimen>

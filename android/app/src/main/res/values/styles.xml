@@ -2,6 +2,8 @@
 <resources>
 
     <style name="CustomNoBar" parent="android:Theme.Holo.Light">
+        <item name="android:windowDisablePreview">true</item>
+
         <!--alert dialog customizations-->
         <item name="md_title_color">@color/color3</item>
         <item name="md_positive_color">@color/color4</item>

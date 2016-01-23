@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/list_activity_horizontal_margin"
     android:paddingRight="@dimen/list_activity_horizontal_margin"
-    android:paddingBottom="@dimen/list_activity_vertical_margin"
+    android:paddingBottom="35dp"
     android:paddingTop="@dimen/list_activity_vertical_margin"
-    android:background="@color/color1"
+    android:background="@drawable/login_background"
     tools:context="com.bramble.kickback.activities.SplashScreen"
     android:imeOptions="actionDone">
 
@@ -24,19 +24,19 @@
             android:paddingTop="32dp"
             android:paddingBottom="32dp"
             android:text="LOG IN"
-            android:textColor="@color/color4"
+            android:textColor="@color/white"
             android:textSize="66sp"
             android:id="@+id/signInTitle"
             android:layout_centerHorizontal="true" />
 
         <EditText
             android:layout_width="@dimen/edittext_width"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:id="@+id/editTextLoginUsername"
-            android:background="@drawable/edit_text_basic"
             android:paddingLeft="@dimen/edittext_padding"
             android:paddingRight="@dimen/edittext_padding"
             android:hint="username"
+            android:background="@drawable/rounded_edittext"
             android:inputType="text"
             android:layout_below="@+id/signInTitle"
             android:layout_centerHorizontal="true" />
@@ -49,9 +49,9 @@
 
         <EditText
             android:layout_width="@dimen/edittext_width"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/rounded_edittext"
             android:id="@+id/editTextPassword"
-            android:background="@drawable/edit_text_basic"
             android:paddingLeft="@dimen/edittext_padding"
             android:paddingRight="@dimen/edittext_padding"
             android:hint="password"
@@ -65,25 +65,29 @@
             android:layout_below="@+id/editTextPassword"
             android:id="@+id/space_2"/>
 
-        <TextView
+        <com.bramblellc.myapplication.layouts.TextViewWithTypeface
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="11sp"
+            android:textSize="16sp"
+            android:clickable="true"
+            android:text="Forgot you password?"
             android:layout_below="@+id/space_2"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:id="@+id/login_textview"/>
 
     </RelativeLayout>
 
     <com.bramblellc.myapplication.layouts.ButtonWithTypeface
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:text="LOG IN"
-        android:textColor="@color/color1"
-        android:background="@color/color5"
-        android:textSize="40sp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:background="@color/transparent"
+        android:textSize="30sp"
         android:textStyle="bold"
+        android:text="LOG IN"
+
         android:layout_alignParentBottom="true"
         android:id="@+id/buttonSignIn"
         android:onClick="loginPressed"/>

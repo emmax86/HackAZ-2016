@@ -10,14 +10,17 @@ import com.bramblellc.myapplication.R;
 
 public class Splashscreen extends Activity {
 
-    private static int SPLASH_TIME_OUT = 2250;
+    private static int SPLASH_TIME_OUT = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen_layout);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        this.pause();
+    }
+
+    public void pause() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -26,7 +29,6 @@ public class Splashscreen extends Activity {
                 finish();
             }
         }, SPLASH_TIME_OUT);
-
     }
 }
 
