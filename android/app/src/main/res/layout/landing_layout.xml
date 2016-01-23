@@ -2,34 +2,96 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="15dp"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp"
+    android:paddingTop="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
     android:paddingBottom="2dp"
-    android:background="@color/color1"
+    android:background="@drawable/login_background"
     android:id="@+id/background">
 
-    <ImageButton
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@mipmap/settings"
-        android:onClick="settingsPressed"/>
+    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="32dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="20dp"
+        android:textColor="@color/white"
+        android:text="Number of Unique Accounts:"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:id="@+id/num_acc"/>
 
-    <ImageView
-        android:id="@+id/transport_type"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/walking"/>
+    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/num_acc"
+        android:id="@+id/num_acc_text"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+
+    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="32dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="20dp"
+        android:textColor="@color/white"
+        android:text="Total Number of Guard Dogs:"
+        android:gravity="center"
+        android:layout_below="@id/num_acc_text"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:id="@+id/num_dogs"/>
+
+    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/num_dogs"
+        android:id="@+id/num_dogs_text"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+
+    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="32dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="20dp"
+        android:textColor="@color/white"
+        android:text="Incident Responses:"
+        android:gravity="center"
+        android:layout_below="@id/num_dogs_text"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:id="@+id/num_pings"/>
+
+    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/num_pings"
+        android:id="@+id/num_pings_text"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/color4"
+        android:textColor="@color/white"
         android:textSize="12sp"
         android:text="Version 0.1.0 © Bramble LLC"/>
 

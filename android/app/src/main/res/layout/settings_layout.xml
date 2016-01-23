@@ -12,7 +12,7 @@
         android:layout_height="?android:attr/actionBarSize"
         android:layout_alignParentTop="true"
         android:text="Settings"
-        android:textColor="@color/color1"
+        android:textColor="@color/white"
         app:backgroundType="1"
         app:backButtonColor="blue"/>
 

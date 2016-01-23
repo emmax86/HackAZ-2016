@@ -32,7 +32,7 @@
 
         <EditText
             android:layout_width="@dimen/edittext_width"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:id="@+id/editTextDesiredUsername"
             android:background="@drawable/rounded_edittext"
             android:paddingLeft="@dimen/edittext_padding"
@@ -50,7 +50,7 @@
 
         <EditText
             android:layout_width="@dimen/edittext_width"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:id="@+id/editTextDesiredPassword"
             android:background="@drawable/rounded_edittext"
             android:paddingLeft="@dimen/edittext_padding"
@@ -68,7 +68,7 @@
 
         <EditText
             android:layout_width="@dimen/edittext_width"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:id="@+id/editTextDesiredPasswordConfirm"
             android:background="@drawable/rounded_edittext"
             android:paddingLeft="@dimen/edittext_padding"
@@ -87,7 +87,7 @@
 
         <EditText
             android:layout_width="@dimen/edittext_width"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:id="@+id/editTextPhoneNumber"
             android:background="@drawable/rounded_edittext"
             android:paddingLeft="@dimen/edittext_padding"
