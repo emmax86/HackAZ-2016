@@ -1,3 +1,7 @@
 venv/
 *.pyc
 *.pyo
+
+*.iml
+vcs.xml
+.idea/
