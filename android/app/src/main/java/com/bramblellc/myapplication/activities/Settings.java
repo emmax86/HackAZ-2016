@@ -14,6 +14,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.bramblellc.myapplication.R;
 import com.bramblellc.myapplication.layouts.CustomActionbar;
 import com.bramblellc.myapplication.layouts.FullWidthButton;
+import com.bramblellc.myapplication.services.LogoutService;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -209,9 +210,16 @@ public class Settings extends Activity {
     }
 
     public void logout() {
+        Intent deauthenticateIntent = new Intent(Settings.this, LogoutService.class);
+        SharedPreferences.Editor editor = getSharedPreferences("GuardDog", MODE_PRIVATE).edit();
+        SharedPreferences prefs = getSharedPreferences("GuardDog", MODE_PRIVATE);
+        deauthenticateIntent.putExtra("token", prefs.getString("token", ""));
+        editor.remove("token");
+        editor.apply();
         Intent startIntent = new Intent(Settings.this, Landing.class);
         startIntent.putExtra("finish", true);
         startIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
+        startService(deauthenticateIntent);
         startActivity(startIntent);
         finish();
     }
