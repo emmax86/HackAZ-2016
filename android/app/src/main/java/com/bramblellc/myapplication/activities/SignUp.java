@@ -58,7 +58,7 @@ public class SignUp extends Activity {
         desiredNameEditText = (EditText) findViewById(R.id.editTextDesiredUsername);
         desiredPasswordEditText = (EditText) findViewById(R.id.editTextDesiredPassword);
         phoneNumberEditText = (EditText) findViewById(R.id.editTextPhoneNumber);
-        continueButton = (Button) findViewById(R.id.buttonSignUp);
+        continueButton = (Button) findViewById(R.id.signUp);
 
         phoneNumberEditText.addTextChangedListener(new TextWatcher() {
 
@@ -191,10 +191,15 @@ public class SignUp extends Activity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, AccountPortal.class);
+        Intent intent = new Intent(this, Propoganda.class);
         startActivity(intent);
         finish();
     }
+
+    public void backSignUpPressed(View view) {
+        onBackPressed();
+    }
+
 
     public String getDesiredUsernameString() {
         return this.desiredNameEditText.getText().toString();

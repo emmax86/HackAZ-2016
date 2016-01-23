@@ -14,7 +14,6 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -32,12 +31,8 @@ import java.util.Set;
 
 public class Landing extends Activity {
 
-    private TextView numAccText;
-
     private GuardDogSensorListener guardDogSensorListener;
-
     private BatchBroadcastReceiver batchBroadcastReceiver;
-
     private AnalyzeBroadcastReceiver analyzeBroadcastReceiver;
 
     @Override
@@ -45,7 +40,6 @@ public class Landing extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_layout);
         SharedPreferences prefs = getSharedPreferences("GuardDog", MODE_PRIVATE);
-        numAccText = (TextView) findViewById(R.id.num_acc_text);
         guardDogSensorListener = new GuardDogSensorListener(this, prefs.getString("username", "hodor"));
 
         batchBroadcastReceiver = new BatchBroadcastReceiver();
@@ -69,7 +63,6 @@ public class Landing extends Activity {
     }
 
     public void init() {
-        animateTextView(0,1000,numAccText);
         boolean setup = getIntent().getBooleanExtra("setup", false);
         if (setup) {
             new MaterialDialog.Builder(this)
@@ -88,23 +81,6 @@ public class Landing extends Activity {
         else {
             startListening();
         }
-    }
-
-    public void animateTextView(int initialValue, int finalValue, final TextView  textview) {
-
-        ValueAnimator valueAnimator = ValueAnimator.ofInt((int)initialValue, (int)finalValue);
-        valueAnimator.setDuration(1500);
-
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnimator) {
-
-                textview.setText(valueAnimator.getAnimatedValue().toString());
-
-            }
-        });
-        valueAnimator.start();
-
     }
 
     @Override

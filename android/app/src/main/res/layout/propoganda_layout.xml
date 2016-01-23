@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +10,7 @@
 
     <Space
         android:layout_width="fill_parent"
-        android:layout_height="74dp"
+        android:layout_height="24dp"
         android:layout_alignParentTop="true"
         android:id="@+id/space_1"/>
 
@@ -89,13 +88,6 @@
         android:text="Our packets are small so your data plan can be too"
         android:id="@+id/box_body"/>
 
-    <ImageButton
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/guard_dog_full_logo_white_plus"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true" />
-
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -132,20 +124,47 @@
         android:text="Using server hosted machine learning we customize the user experience"
         android:id="@+id/chip_body"/>
 
-    <ImageButton
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/guard_dog_full_logo_white_plus"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true" />
 
-    <ImageButton
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/settings"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:onClick="settingsPressed"/>
+
+    <com.bramblellc.myapplication.layouts.ButtonWithTypeface
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/title_text_color"
+        android:background="@drawable/new_button"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="CONTINUE"
+        android:layout_above="@+id/space_6"
+        android:id="@+id/toLogin"
+        android:onClick="continuePressed"/>
+
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/space_height"
+        android:layout_above="@+id/toSignUp"
+        android:id="@+id/space_6"/>
+
+    <com.bramblellc.myapplication.layouts.ButtonWithTypeface
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:text="CANCEL"
+        android:textColor="@color/white"
+        android:background="@color/transparent"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/space_5"
+        android:id="@+id/toSignUp"
+        android:onClick="cancelPressed"/>
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/space_height"
+        android:layout_above="@+id/copyright"
+        android:id="@+id/space_5"/>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -154,6 +173,7 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
         android:textSize="12sp"
+        android:id="@+id/copyright"
         android:text="Version 0.1.0 © Bramble LLC"/>
 
 </RelativeLayout>

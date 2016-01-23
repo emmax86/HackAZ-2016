@@ -59,7 +59,7 @@ public class Login extends Activity {
         }
         //usernameEditText.setText(User.getUser().getUsername());
         passwordEditText = (EditText) findViewById(R.id.editTextPassword);
-        loginButton = (Button) findViewById(R.id.buttonSignIn);
+        loginButton = (Button) findViewById(R.id.loginButton);
         buttonsEnabled = true;
 
         /*
@@ -119,6 +119,10 @@ public class Login extends Activity {
     // when the login button is pressed (login)
     public void loginPressed(View v){
         login();
+    }
+
+    public void backPressed(View view) {
+        onBackPressed();
     }
 
     public void login() {

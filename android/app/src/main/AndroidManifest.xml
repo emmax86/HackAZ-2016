@@ -36,6 +36,11 @@
         </activity>
 
         <activity
+            android:name=".activities.Propoganda"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
             android:name=".activities.SignUp"
             android:screenOrientation="portrait">
         </activity>

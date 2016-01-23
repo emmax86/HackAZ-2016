@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/list_activity_horizontal_margin"
     android:paddingRight="@dimen/list_activity_horizontal_margin"
-    android:paddingBottom="35dp"
+    android:paddingBottom="2dp"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/login_background"
     tools:context="com.bramble.kickback.activities.SplashScreen"
@@ -103,14 +103,51 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
+        android:textColor="@color/title_text_color"
+        android:background="@drawable/new_button"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="SIGN UP"
+        android:layout_above="@+id/space_6"
+        android:id="@+id/toLogin"
+        android:onClick="continueSignUpPressed"/>
+
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/space_height"
+        android:layout_above="@+id/toSignUp"
+        android:id="@+id/space_6"/>
+
+    <com.bramblellc.myapplication.layouts.ButtonWithTypeface
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:text="BACK"
         android:textColor="@color/white"
         android:background="@color/transparent"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:text="SIGN UP"
+        android:layout_above="@+id/space_5"
+        android:id="@+id/signUp"
+        android:onClick="backSignUpPressed"/>
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/space_height"
+        android:layout_above="@+id/copyright"
+        android:id="@+id/space_5"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:id="@+id/buttonSignUp"
-        android:onClick="continueSignUpPressed"/>
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:id="@+id/copyright"
+        android:text="Version 0.1.0 © Bramble LLC"/>
 
     <Space
         android:layout_width="match_parent"
