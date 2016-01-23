@@ -66,24 +66,3 @@ class AccelerationFrame(db.Model):
             "incident_id": self.incident_id
         }
 
-
-class Counters(db.Model):
-    __tablename__ = "counters"
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True, default=1)
-    count_users = db.Column(db.Integer)
-    count_incidents = db.Column(db.Integer)
-    count_lives_saved = db.Column(db.Integer)
-
-    def __init__(self):
-        self.count_users = 0
-        self.count_incidents = 0
-        self.count_users = 0
-
-    def increment_users(self):
-        self.count_users += 1
-
-    def increment_incidents(self):
-        self.count_incidents += 1
-
-    def incrememnt_lives_saved(self):
-        self.count_lives_saved += 1
