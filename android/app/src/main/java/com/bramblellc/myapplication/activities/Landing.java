@@ -96,7 +96,7 @@ public class Landing extends Activity {
         int difference = Math.abs(finalValue - initialValue);
         Handler handler = new Handler();
         for (int count = start; count <= end; count++) {
-            int time = Math.round(decelerateInterpolator.getInterpolation((((float) count) / difference)) * 100) * count;
+            int time = Math.round(decelerateInterpolator.getInterpolation((((float) count) / difference)) * 10) * count;
             final int finalCount = ((initialValue > finalValue) ? initialValue - count : count);
             handler.postDelayed(new Runnable() {
                 @Override

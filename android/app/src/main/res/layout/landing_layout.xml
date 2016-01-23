@@ -61,8 +61,8 @@
         android:layout_below="@+id/users_header"
         android:layout_centerHorizontal="true"
         android:paddingTop="2dp"
-        android:paddingBottom="38dp"
-        android:textSize="18dp"
+        android:paddingBottom="28dp"
+        android:textSize="38dp"
         android:gravity="center"
         android:textColor="@color/white"
         android:id="@+id/users_body"/>
@@ -98,7 +98,7 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="2dp"
         android:paddingBottom="18dp"
-        android:textSize="18dp"
+        android:textSize="38dp"
         android:gravity="center"
         android:textColor="@color/white"
         android:id="@+id/dogs_body"/>
