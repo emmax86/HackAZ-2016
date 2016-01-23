@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/list_activity_horizontal_margin"
     android:paddingBottom="2dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/login_background"
+    android:background="@mipmap/login_background"
     tools:context="com.bramble.kickback.activities.SplashScreen"
     android:imeOptions="actionDone">
 
@@ -21,7 +21,7 @@
         <com.bramblellc.myapplication.layouts.TextViewWithTypeface
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="32dp"
+            android:paddingTop="30dp"
             android:paddingBottom="32dp"
             android:text="SIGN UP"
             android:textColor="@color/white"
@@ -134,7 +134,7 @@
 
     <Space
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/space_height"
+        android:layout_height="8dp"
         android:layout_above="@+id/copyright"
         android:id="@+id/space_5"/>
 

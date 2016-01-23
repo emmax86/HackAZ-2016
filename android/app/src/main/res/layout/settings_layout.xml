@@ -29,7 +29,7 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/list_item_height"
         android:layout_below="@+id/my_dogs_full_width_button"
-        android:text="Phone protection services"
+        android:text="Emergency Contact"
         app:lowerLine="true" />
 
     <com.bramblellc.myapplication.layouts.FullWidthButton

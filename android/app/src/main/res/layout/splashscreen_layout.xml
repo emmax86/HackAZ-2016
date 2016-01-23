@@ -6,7 +6,7 @@
     android:paddingRight="0dp"
     android:paddingTop="55dp"
     android:paddingBottom="2dp"
-    android:background="@drawable/login_background">
+    android:background="@mipmap/login_background">
 
     <ImageView
         android:layout_width="80dp"

@@ -75,7 +75,7 @@ public class Landing extends Activity {
 
     public void init() {
         animateTextView(0,1000,usersText);
-        animateTextView(0,1000,dogsText);
+        animateTextView(0,2000,dogsText);
         boolean setup = getIntent().getBooleanExtra("setup", false);
         if (setup) {
             new MaterialDialog.Builder(this)

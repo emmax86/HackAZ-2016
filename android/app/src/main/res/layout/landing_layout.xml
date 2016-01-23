@@ -6,7 +6,7 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingBottom="2dp"
-    android:background="@drawable/login_background"
+    android:background="@mipmap/login_background"
     android:id="@+id/background">
 
     <ImageButton

@@ -5,12 +5,12 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingBottom="2dp"
-    android:background="@drawable/login_background"
+    android:background="@mipmap/login_background"
     android:id="@+id/background">
 
     <Space
         android:layout_width="fill_parent"
-        android:layout_height="24dp"
+        android:layout_height="4dp"
         android:layout_alignParentTop="true"
         android:id="@+id/space_1"/>
 
@@ -161,7 +161,7 @@
 
     <Space
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/space_height"
+        android:layout_height="8dp"
         android:layout_above="@+id/copyright"
         android:id="@+id/space_5"/>
 
