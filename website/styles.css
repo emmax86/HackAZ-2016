@@ -7,6 +7,15 @@
 .navbar-default .navbar-brand {
     color: #777;
 }
+div.container-fluid div.navbar-header .navbar-brand {
+  color: #8559D6;
+    
+}
+
+div.container-fluid div.navbar-header .navbar-brand a:hover {
+  color: #00AFBF;
+    
+}
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
     color: #5E5E5E;
