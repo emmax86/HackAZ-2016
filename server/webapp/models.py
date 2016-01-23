@@ -11,6 +11,7 @@ class User(object):
         self.password_hash = ""
         self.phone_number = ""
         self.secret_key = b64encode(urandom(64)).decode("utf-8")
+        self.contacts = []
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password, method="pbkdf2:sha256", salt_length=32)
@@ -21,6 +22,7 @@ class User(object):
     def write_to_db(self):
         user_dict = {"password_hash": self.password_hash, "phone_number": self.phone_number, "secret_key": self.secret_key}
         redis_db.hmset(self.username, user_dict)
+        redis_db.sadd(self.username + ":contacts", self.contacts)
 
     def deauthenticate(self):
         self.secret_key = b64encode(urandom(64)).decode("utf-8")
@@ -36,5 +38,6 @@ class User(object):
         if not fetched_user.password_hash or not fetched_user.phone_number or not fetched_user.secret_key:
             return None
         else:
+            fetched_user.contacts = redis_db.smembers(fetched_user.username + ":contacts")
             return fetched_user
 
