@@ -1,4 +1,4 @@
-from __init__ import app, db
+from __init__ import app
 from util import verify_structure
 from flask import request, json
 from models import *
