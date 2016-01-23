@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.InputType;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -30,9 +31,9 @@ import java.util.Set;
 public class Settings extends Activity {
 
     private CustomActionbar settingsCustomActionbar;
-    private FullWidthButton myDogsFullWidthButton;
-    private FullWidthButton phoneServicesFullWidthButton;
-    private FullWidthButton logoutFullWidthButton;
+    private ImageButton myDogsFullWidthButton;
+    private ImageButton phoneServicesFullWidthButton;
+    private ImageButton logoutFullWidthButton;
     private FullWidthButton testFullWidthButton;
 
     private IntentFilter addContactFilter;
@@ -48,9 +49,9 @@ public class Settings extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         settingsCustomActionbar = (CustomActionbar) findViewById(R.id.settings_custom_actionbar);
-        myDogsFullWidthButton = (FullWidthButton) findViewById(R.id.my_dogs_full_width_button);
-        phoneServicesFullWidthButton = (FullWidthButton) findViewById(R.id.phone_aid_input_full_width_button);
-        logoutFullWidthButton = (FullWidthButton) findViewById(R.id.logout_full_width_button);
+        myDogsFullWidthButton = (ImageButton) findViewById(R.id.my_dogs_full_width_button);
+        phoneServicesFullWidthButton = (ImageButton) findViewById(R.id.phone_aid_input_full_width_button);
+        logoutFullWidthButton = (ImageButton) findViewById(R.id.logout_full_width_button);
         //testFullWidthButton = (FullWidthButton) findViewById(R.id.test_full_width_button);
 
         settingsCustomActionbar.getBackButton().setOnClickListener(new View.OnClickListener() {
@@ -59,21 +60,21 @@ public class Settings extends Activity {
                 finish();
             }
         });
-        myDogsFullWidthButton.getFullWidthButton().setOnClickListener(new View.OnClickListener() {
+        myDogsFullWidthButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myDogsPressed(v);
             }
         });
 
-        phoneServicesFullWidthButton.getFullWidthButton().setOnClickListener(new View.OnClickListener() {
+        phoneServicesFullWidthButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 phoneServicesPressed(v);
             }
         });
 
-        logoutFullWidthButton.getFullWidthButton().setOnClickListener(new View.OnClickListener() {
+        logoutFullWidthButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logoutPressed(v);
