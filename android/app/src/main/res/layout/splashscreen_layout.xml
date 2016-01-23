@@ -2,49 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="25dp"
-    android:paddingRight="25dp"
-    android:paddingTop="25dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="55dp"
     android:paddingBottom="2dp"
-    android:background="@color/color1">
+    android:background="@drawable/login_background">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
-
-        <ImageView
-            android:layout_width="225dp"
-            android:layout_height="225dp"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/guard_dog_full_logo"
-            android:id="@+id/splashscreen_logo"/>
-
-        <com.bramblellc.myapplication.layouts.TextViewWithTypeface
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/splashscreen_logo"
-            android:textColor="@color/color5"
-            android:text="@string/app_name"
-            android:layout_centerHorizontal="true"
-            android:textSize="60sp"
-            android:textStyle="bold"
-            android:id="@+id/kickback_splashtext"/>
-
-        <Space
-            android:layout_width="1dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/kickback_splashtext"/>
-
-    </RelativeLayout>
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/guard_dog_full_logo_white"
+        android:id="@+id/splashscreen_logo"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/darkGray"
+        android:textColor="@color/white"
         android:textSize="12sp"
         android:text="Version 0.1.0 © Bramble LLC"/>
 
