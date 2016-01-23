@@ -3,6 +3,8 @@ from util import verify_structure
 from flask import request, json
 from models import *
 from counters import get_counter
+from grumpy import generate_session_id, verify_session
+from datetime import datetime
 
 
 @app.route("/")
@@ -39,9 +41,23 @@ def log_in():
         if obj and obj.get("username") and obj.get("password"):
             user = User.get_from_db(obj["username"])
             if user and user.verify_password(obj["password"]):
-                return "Great success"
+                return generate_session_id(user.username, datetime.now())
             else:
                 return "Invalid username/password combo", 401
+        else:
+            return "Malformed request", 401
+
+
+@app.route("/authtest", methods=["GET", "POST"])
+def authtest():
+    if request.method == "GET":
+        return "WOLOL"
+    elif request.method == "POST":
+        obj = request.get_json(force=True)
+        if obj and obj.get("session_id") and obj.get("username"):
+            if verify_session(obj["username"], obj["session_id"]):
+                return "Great success"
+            return "Great Failure", 401
         else:
             return "Malformed request", 401
 
