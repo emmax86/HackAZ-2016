@@ -59,7 +59,7 @@ def logout():
         if obj and obj.get("token"):
             token_elements = obj.get("token").split(":")
             user = User.get_from_db(token_elements[0])
-            if user and verify_token(user, obj.get("token")):
+            if user and verify_token(user, obj["token"]):
                 user.deauthenticate()
                 user.write_to_db()
                 return "Great success"
@@ -78,8 +78,8 @@ def add_contact():
         if obj and obj.get("token") and obj.get("phone_number"):
             token_elements = obj.get("token").split(":")
             user = User.get_from_db(token_elements[0])
-            if user and verify_token(user, obj.get("token")):
-                user.contacts.append(token_elements)
+            if user and verify_token(user, obj["token"]):
+                user.contacts.add(obj["phone_number"])
                 user.write_to_db()
                 return "Great success"
             else:
