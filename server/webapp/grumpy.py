@@ -9,21 +9,21 @@ import base64
 expire_timedelta = timedelta(days=120)
 
 
-def generate_session_id(username, dt):
+def generate_token(username, dt):
     unix_timestamp = int(time.mktime(dt.timetuple()))
-    session_prefix = username + ":" + str(unix_timestamp)
-    session_hmac = base64.b64encode(hmac.new(app.secret_key, session_prefix, digestmod=sha256).digest())
-    session_id = session_prefix + ":" + session_hmac
-    return session_id
+    token_prefix = username + ":" + str(unix_timestamp)
+    token_hmac = base64.b64encode(hmac.new(app.secret_key, token_prefix, digestmod=sha256).digest())
+    token_id = token_prefix + ":" + token_hmac
+    return token_id
 
 
 def verify_session(username, session_id):
-    tokens = session_id.split(":")
-    if username != tokens[0]:
+    tokens_elements = session_id.split(":")
+    if username != tokens_elements[0]:
         return False
 
-    creation_datetime = datetime.fromtimestamp(int(tokens[1]))
+    creation_datetime = datetime.fromtimestamp(int(tokens_elements[1]))
     now = datetime.utcnow()
     if now - creation_datetime.utcnow() > expire_timedelta:
         return False
-    return generate_session_id(username, creation_datetime) == session_id
+    return generate_token(username, creation_datetime) == session_id
