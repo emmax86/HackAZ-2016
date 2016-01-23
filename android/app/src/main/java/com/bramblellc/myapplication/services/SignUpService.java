@@ -42,7 +42,6 @@ public class SignUpService extends IntentService {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("username", intent.getStringExtra("username"));
             jsonObject.put("phone_number", intent.getStringExtra("phone_number"));
-            jsonObject.put("warranty", false);
             jsonObject.put("password", intent.getStringExtra("password"));
 
             JsonBodyContent content = new JsonBodyContent(jsonObject.toString());
@@ -54,8 +53,13 @@ public class SignUpService extends IntentService {
             Response response = connectionHandler.getResponse();
 
             Intent localIntent = new Intent(ActionConstants.REGISTER_ACTION);
-            localIntent.putExtra("successful", response.getResponseCode() < 400);
-            localIntent.putExtra("message", response.getBodyContent().getOutputString());
+            if (response.getResponseCode() < 400) {
+                JSONObject responseObject = new JSONObject(response.getBodyContent().getOutputString());
+                localIntent.putExtra("token", responseObject.getString("token"));
+            }
+            else {
+                localIntent.putExtra("message", response.getBodyContent().getOutputString());
+            }
             LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
         }
         catch (JSONException e) {

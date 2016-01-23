@@ -163,15 +163,14 @@ public class Login extends Activity {
                 ft = fm.beginTransaction();
                 ft.remove(loadingBar);
                 ft.commit();
-                Toast.makeText(Login.this, "Invalid phone number or password", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Invalid username or password", Toast.LENGTH_LONG).show();
                 loginButton.setText("LOG IN");
                 Login.this.passwordEditText.setText("");
                 Login.this.enableButtons();
             }
             else {
                 SharedPreferences.Editor editor = getSharedPreferences("GuardDog", MODE_PRIVATE).edit();
-                editor.putString("username", username);
-                editor.putString("password", password);
+                editor.putString("token", intent.getStringExtra("token"));
                 editor.apply();
                 LocalBroadcastManager.getInstance(Login.this).unregisterReceiver(loginReceiver);
                 Intent startIntent = new Intent(Login.this, Landing.class);

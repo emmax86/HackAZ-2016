@@ -36,7 +36,7 @@ public class LoginService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         try {
-            Route route = new Route("http://guarddog.stevex86.com/login");
+            Route route = new Route("http://guarddog.stevex86.com/log_in");
             Request request = new Request(route, new Post());
 
             JSONObject jsonObject = new JSONObject();
@@ -53,7 +53,13 @@ public class LoginService extends IntentService {
 
             Intent localIntent = new Intent(ActionConstants.LOGIN_ACTION);
             localIntent.putExtra("successful", response.getResponseCode() < 400);
-            localIntent.putExtra("message", response.getBodyContent().getOutputString());
+            if (response.getResponseCode() < 400) {
+                JSONObject responseObject = new JSONObject(response.getBodyContent().getOutputString());
+                localIntent.putExtra("token", responseObject.getString("token"));
+            }
+            else {
+                localIntent.putExtra("message", response.getBodyContent().getOutputString());
+            }
             LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
         }
         catch (JSONException e) {
