@@ -49,11 +49,11 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:text="LOG IN"
         android:textColor="@color/title_text_color"
         android:background="@drawable/new_button"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:text="LOG IN"
         android:layout_above="@+id/space_1"
         android:id="@+id/toLogin"
         android:onClick="toSignInPressed"/>

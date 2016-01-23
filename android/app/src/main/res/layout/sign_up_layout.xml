@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/list_activity_horizontal_margin"
     android:paddingRight="@dimen/list_activity_horizontal_margin"
-    android:paddingBottom="@dimen/list_activity_vertical_margin"
+    android:paddingBottom="35dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/color1"
+    android:background="@drawable/login_background"
     tools:context="com.bramble.kickback.activities.SplashScreen"
     android:imeOptions="actionDone">
 
@@ -24,7 +24,7 @@
             android:paddingTop="32dp"
             android:paddingBottom="32dp"
             android:text="SIGN UP"
-            android:textColor="@color/color5"
+            android:textColor="@color/white"
             android:textSize="66sp"
             android:id="@+id/signUpTitle"
             android:layout_centerHorizontal="true"
@@ -32,9 +32,9 @@
 
         <EditText
             android:layout_width="@dimen/edittext_width"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:id="@+id/editTextDesiredUsername"
-            android:background="@drawable/edit_text_basic"
+            android:background="@drawable/rounded_edittext"
             android:paddingLeft="@dimen/edittext_padding"
             android:paddingRight="@dimen/edittext_padding"
             android:hint="username"
@@ -50,9 +50,9 @@
 
         <EditText
             android:layout_width="@dimen/edittext_width"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:id="@+id/editTextDesiredPassword"
-            android:background="@drawable/edit_text_basic"
+            android:background="@drawable/rounded_edittext"
             android:paddingLeft="@dimen/edittext_padding"
             android:paddingRight="@dimen/edittext_padding"
             android:hint="password"
@@ -66,30 +66,48 @@
             android:layout_below="@+id/editTextDesiredPassword"
             android:id="@+id/space_2"/>
 
+        <EditText
+            android:layout_width="@dimen/edittext_width"
+            android:layout_height="30dp"
+            android:id="@+id/editTextDesiredPasswordConfirm"
+            android:background="@drawable/rounded_edittext"
+            android:paddingLeft="@dimen/edittext_padding"
+            android:paddingRight="@dimen/edittext_padding"
+            android:hint="confirm password"
+            android:inputType="textPassword"
+            android:layout_below="@+id/space_2"
+            android:layout_centerHorizontal="true"/>
+
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/space_height"
+            android:layout_below="@+id/editTextDesiredPasswordConfirm"
+            android:id="@+id/space_3"/>
 
 
         <EditText
             android:layout_width="@dimen/edittext_width"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:id="@+id/editTextPhoneNumber"
-            android:background="@drawable/edit_text_basic"
+            android:background="@drawable/rounded_edittext"
             android:paddingLeft="@dimen/edittext_padding"
             android:paddingRight="@dimen/edittext_padding"
             android:maxLength="12"
             android:hint="phone number"
             android:inputType="phone"
-            android:layout_below="@+id/space_2"
+            android:layout_below="@+id/space_3"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
     <com.bramblellc.myapplication.layouts.ButtonWithTypeface
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:text="SIGN UP"
-        android:textColor="@color/color1"
-        android:background="@color/color4"
-        android:textSize="40sp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:background="@color/transparent"
+        android:textSize="30sp"
         android:textStyle="bold"
+        android:text="SIGN UP"
         android:layout_alignParentBottom="true"
         android:id="@+id/buttonSignUp"
         android:onClick="continueSignUpPressed"/>
