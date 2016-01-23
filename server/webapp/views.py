@@ -4,6 +4,9 @@ from models import *
 from grumpy import generate_token, verify_token
 from datetime import datetime
 from counters import increment_counter, decrement_counter, get_counter
+from front_end import Data
+from sklearn.linear_model import LogisticRegression
+import pickle
 
 
 @app.route("/")
@@ -13,26 +16,23 @@ def hello():
 
 @app.route("/sign_up", methods=["POST"])
 def sign_up():
-    if request.method == "GET":
-        return "WOLOL"
-    elif request.method == "POST":
-        obj = request.get_json(force=True)
-        if obj and obj.get("username") and obj.get("phone_number") and obj.get("password"):
-            if not User.get_from_db(obj["username"]):
-                new_user = User()
-                new_user.username = obj["username"]
-                new_user.phone_number = obj["phone_number"]
-                new_user.set_password(obj["password"])
-                new_user.write_to_db()
+    obj = request.get_json(force=True)
+    if obj and obj.get("username") and obj.get("phone_number") and obj.get("password"):
+        if not User.get_from_db(obj["username"]):
+            new_user = User()
+            new_user.username = obj["username"]
+            new_user.phone_number = obj["phone_number"]
+            new_user.set_password(obj["password"])
+            new_user.write_to_db()
 
-                increment_counter('users-count')
+            increment_counter('users-count')
 
-                dump = {"token": generate_token(new_user.username, new_user.secret_key, datetime.now())}
-                return json.dumps(dump)
-            else:
-                return "You are already a registered user", 401
+            dump = {"token": generate_token(new_user.username, new_user.secret_key, datetime.now())}
+            return json.dumps(dump)
         else:
-            return "Malformed request", 401
+            return "You are already a registered user", 401
+    else:
+        return "Malformed request", 401
 
 
 @app.route("/log_in", methods=["POST"])
@@ -98,6 +98,77 @@ def remove_contact():
             return json.dumps(list(user.contacts))
         else:
             return "Malformed request", 401
+    else:
+        return "Malformed request", 401
+
+
+@app.route("/classify", methods=["POST"])
+def classify():
+    obj = request.get_json(force=True)
+    if obj and obj.get("token") and obj.get("batch-phone") and obj.get("batch-pebble"):
+        token_elements = obj.get("token").split(":")
+        user = User.get_from_db(token_elements[0])
+        if user and verify_token(user, obj["token"]):
+            batch_phone = obj["batch-phone"]
+            batch_pebble = obj["batch-pebble"]
+            data = Data(batch_phone, batch_pebble).data_array()
+            past_data = redis_db.get(user.username + ":ml")
+            if past_data:
+                regression_engine = pickle.loads(past_data)
+            else:
+                regression_engine = LogisticRegression()
+            d = regression_engine.predict(data)
+            print d
+            guess = bool(d)
+            response_dict = {"guess": guess}
+            return json.dumps(response_dict)
+        else:
+            return "Malformed request", 401
+    else:
+        return "Malformed request", 401
+
+
+@app.route("/correct", methods=["POST"])
+def correct():
+    obj = request.get_json(force=True)
+    if obj and obj.get("token") and obj.get("batch-phone") and obj.get("batch-pebble") and obj.get("answer"):
+        token_elements = obj.get("token").split(":")
+        user = User.get_from_db(token_elements[0])
+        if user and verify_token(user, obj["token"]):
+            batch_phone = obj["batch-phone"]
+            batch_pebble = obj["batch-pebble"]
+            data = Data(batch_phone, batch_pebble).data_array()
+            past_data = redis_db.get(user.username + ":ml")
+            if past_data:
+                regression_engine = pickle.loads(past_data)
+            else:
+                regression_engine = LogisticRegression()
+            answer = int(obj["answer"])
+            regression_engine.fit(data, [answer])
+            redis_db.set(user.username + ":ml", pickle.dumps(regression_engine))
+            return "Great success"
+        else:
+            return "Malformed request", 401
+    else:
+        return "Malformed request", 401
+
+
+@app.route("/train", methods=["POST"])
+def train():
+    obj = request.get_json(force=True)
+    if obj and obj.get("batch-phone") and obj.get("batch-pebble") and obj.get("answer"):
+        batch_phone = obj["batch-phone"]
+        batch_pebble = obj["batch-pebble"]
+        data = Data(batch_phone, batch_pebble).data_array()
+        past_data = redis_db.get("learning-data")
+        if past_data:
+            regression_engine = pickle.loads(past_data)
+        else:
+            regression_engine = LogisticRegression()
+        answer = int(obj["answer"])
+        regression_engine.fit(data, [answer])
+        redis_db.set("learning-data")
+        return "Great success"
     else:
         return "Malformed request", 401
 
