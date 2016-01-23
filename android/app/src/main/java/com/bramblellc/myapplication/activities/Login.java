@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bramblellc.myapplication.R;
+import com.bramblellc.myapplication.data.Globals;
 import com.bramblellc.myapplication.fragments.LoadingBar;
 import com.bramblellc.myapplication.services.ActionConstants;
 import com.bramblellc.myapplication.services.LoginService;
@@ -172,6 +173,7 @@ public class Login extends Activity {
                 SharedPreferences.Editor editor = getSharedPreferences("GuardDog", MODE_PRIVATE).edit();
                 editor.putString("token", intent.getStringExtra("token"));
                 editor.apply();
+                Globals.setToken(intent.getStringExtra("token"));
                 LocalBroadcastManager.getInstance(Login.this).unregisterReceiver(loginReceiver);
                 Intent startIntent = new Intent(Login.this, Landing.class);
                 startActivity(startIntent);

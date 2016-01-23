@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bramblellc.myapplication.R;
+import com.bramblellc.myapplication.data.Globals;
 import com.bramblellc.myapplication.fragments.LoadingBar;
 import com.bramblellc.myapplication.services.ActionConstants;
 import com.bramblellc.myapplication.services.SignUpService;
@@ -244,6 +245,7 @@ public class SignUp extends Activity {
             else {
                 SharedPreferences.Editor editor = getSharedPreferences("GuardDog", MODE_PRIVATE).edit();
                 editor.putString("token", intent.getStringExtra("token"));
+                Globals.setToken(intent.getStringExtra("token"));
                 editor.apply();
                 LocalBroadcastManager.getInstance(SignUp.this).unregisterReceiver(signUpReceiver);
                 SignUp.this.enableButtons();

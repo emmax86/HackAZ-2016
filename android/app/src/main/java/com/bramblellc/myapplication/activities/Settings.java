@@ -2,19 +2,27 @@ package com.bramblellc.myapplication.activities;
 
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bramblellc.myapplication.R;
+import com.bramblellc.myapplication.data.Globals;
 import com.bramblellc.myapplication.layouts.CustomActionbar;
 import com.bramblellc.myapplication.layouts.FullWidthButton;
+import com.bramblellc.myapplication.services.ActionConstants;
+import com.bramblellc.myapplication.services.AddContactService;
 import com.bramblellc.myapplication.services.LogoutService;
+import com.bramblellc.myapplication.services.RemoveContactService;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,6 +34,12 @@ public class Settings extends Activity {
     private FullWidthButton phoneServicesFullWidthButton;
     private FullWidthButton logoutFullWidthButton;
     private FullWidthButton testFullWidthButton;
+
+    private IntentFilter addContactFilter;
+    private IntentFilter removeContactFilter;
+
+    private AddContactReceiver addContactReceiver;
+    private RemoveContactReceiver removeContactReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,15 +124,13 @@ public class Settings extends Activity {
                 .input("", "", new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(MaterialDialog dialog, CharSequence input) {
-                        SharedPreferences prefs = getSharedPreferences("GuardDog", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = getSharedPreferences("GuardDog", MODE_PRIVATE).edit();
-                        Set<String> dogSet = prefs.getStringSet("dogs", null);
-                        if (dogSet == null) {
-                            dogSet = new HashSet<>();
-                        }
-                        dogSet.add(input.toString());
-                        editor.putStringSet("dogs", dogSet);
-                        editor.apply();
+                        Intent addIntent = new Intent(Settings.this, AddContactService.class);
+                        addIntent.putExtra("phone_number", input.toString());
+                        addIntent.putExtra("token", Globals.getToken());
+                        addContactFilter = new IntentFilter(ActionConstants.ADD_CONTACT_ACTION);
+                        addContactReceiver = new AddContactReceiver();
+                        LocalBroadcastManager.getInstance(Settings.this).registerReceiver(addContactReceiver, addContactFilter);
+                        startService(addIntent);
                     }
                 }).show();
     }
@@ -133,16 +145,13 @@ public class Settings extends Activity {
                 .input("phone number", "", new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(MaterialDialog dialog, CharSequence input) {
-                        SharedPreferences prefs = getSharedPreferences("GuardDog", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = getSharedPreferences("GuardDog", MODE_PRIVATE).edit();
-                        Set<String> dogSet = prefs.getStringSet("dogs", null);
-                        if (dogSet.contains(input)) {
-                            dogSet.remove(input.toString());
-                            editor.putStringSet("dogs", dogSet);
-                            editor.apply();
-                        } else {
-                            Toast.makeText(Settings.this, "There was no Guard Dog with the inputted phone number in your kennel.", Toast.LENGTH_LONG).show();
-                        }
+                        Intent removeIntent = new Intent(Settings.this, RemoveContactService.class);
+                        removeIntent.putExtra("phone_number", input.toString());
+                        removeIntent.putExtra("token", Globals.getToken());
+                        removeContactFilter = new IntentFilter(ActionConstants.REMOVE_CONTACT_ACTION);
+                        removeContactReceiver = new RemoveContactReceiver();
+                        LocalBroadcastManager.getInstance(Settings.this).registerReceiver(removeContactReceiver, removeContactFilter);
+                        startService(removeIntent);
                     }
                 }).show();
 
@@ -223,4 +232,43 @@ public class Settings extends Activity {
         startActivity(startIntent);
         finish();
     }
+
+    private class AddContactReceiver extends BroadcastReceiver {
+
+        private AddContactReceiver() {
+
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean successful = intent.getBooleanExtra("successful", false);
+
+            if (!successful) {
+                Toast.makeText(Settings.this, "An error occurred.", Toast.LENGTH_LONG).show();
+            }
+
+            LocalBroadcastManager.getInstance(Settings.this).unregisterReceiver(this);
+        }
+
+    }
+
+    private class RemoveContactReceiver extends BroadcastReceiver {
+
+        private RemoveContactReceiver() {
+
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean successful = intent.getBooleanExtra("successful", false);
+
+            if (!successful) {
+                Toast.makeText(Settings.this, "An error occurred.", Toast.LENGTH_LONG).show();
+            }
+
+            LocalBroadcastManager.getInstance(Settings.this).unregisterReceiver(this);
+        }
+
+    }
+
 }

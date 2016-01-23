@@ -30,7 +30,7 @@ public class LogoutService extends IntentService {
     }
 
     public LogoutService() {
-        this("SignUpService");
+        this("LogoutService");
     }
 
     @Override

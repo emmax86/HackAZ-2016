@@ -75,6 +75,12 @@
         <service android:name=".services.LogoutService"
             android:exported="false"/>
 
+        <service android:name=".services.AddContactService"
+            android:exported="false"/>
+
+        <service android:name=".services.RemoveContactService"
+            android:exported="false"/>
+
         <receiver
             android:name=".receivers.BootUpReceiver"
             android:enabled="true"
