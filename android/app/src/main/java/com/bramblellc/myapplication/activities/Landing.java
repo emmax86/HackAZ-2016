@@ -1,5 +1,6 @@
 package com.bramblellc.myapplication.activities;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,15 +8,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bramblellc.myapplication.R;
@@ -28,12 +28,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 
 public class Landing extends Activity {
 
-    private ImageView transportType;
+    private TextView numAccText;
 
     private GuardDogSensorListener guardDogSensorListener;
 
@@ -44,9 +43,9 @@ public class Landing extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.landing_layout);
         SharedPreferences prefs = getSharedPreferences("GuardDog", MODE_PRIVATE);
-
+        numAccText = (TextView) findViewById(R.id.num_acc_text);
         guardDogSensorListener = new GuardDogSensorListener(this, prefs.getString("username", "hodor"));
 
         batchBroadcastReceiver = new BatchBroadcastReceiver();
@@ -66,39 +65,11 @@ public class Landing extends Activity {
             finish();
             return;
         }
-        transportType = (ImageView) findViewById(R.id.transport_type);
-        setContentView(R.layout.landing_layout);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        Random rnd = new Random();
-        int index = rnd.nextInt(3);
-        RelativeLayout layout =(RelativeLayout)findViewById(R.id.background);
-        if (index == 1) {
-            layout.setBackgroundResource(R.drawable.landing_background_1);
-        }
-        else if (index == 2) {
-            layout.setBackgroundResource(R.drawable.landing_background_2);
-        }
-        else {
-            layout.setBackgroundResource(R.drawable.landing_background_3);
-        }
         init();
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.d("Guard-Dog", "Stopped. Lmaoooooo.");
-        stopListening();
-    }
-
-    @Override
-    public void onRestart() {
-        super.onRestart();
-        Log.d("Guard-Dog", "Resumed. Lmaoooooo.");
-        startListening();
-    }
-
     public void init() {
+        animateTextView(0,1000,numAccText);
         boolean setup = getIntent().getBooleanExtra("setup", false);
         if (setup) {
             new MaterialDialog.Builder(this)
@@ -117,6 +88,37 @@ public class Landing extends Activity {
         else {
             startListening();
         }
+    }
+
+    public void animateTextView(int initialValue, int finalValue, final TextView  textview) {
+
+        ValueAnimator valueAnimator = ValueAnimator.ofInt((int)initialValue, (int)finalValue);
+        valueAnimator.setDuration(1500);
+
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+
+                textview.setText(valueAnimator.getAnimatedValue().toString());
+
+            }
+        });
+        valueAnimator.start();
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d("Guard-Dog", "Stopped. Lmaoooooo.");
+        stopListening();
+    }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        Log.d("Guard-Dog", "Resumed. Lmaoooooo.");
+        startListening();
     }
 
     public void addDogsChain() {
