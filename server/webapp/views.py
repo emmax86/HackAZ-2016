@@ -5,6 +5,7 @@ from models import *
 from counters import get_counter
 from grumpy import generate_token, verify_token
 from datetime import datetime
+from counters import increment_counter, decrement_counter, get_counter
 
 
 @app.route("/")
@@ -25,6 +26,9 @@ def sign_up():
                 new_user.phone_number = obj["phone_number"]
                 new_user.set_password(obj["password"])
                 new_user.write_to_db()
+
+		increment_counter('users-count')
+
                 dump = {"token": generate_token(new_user.username, new_user.secret_key, datetime.now())}
                 return json.dumps(dump)
             else:
@@ -81,6 +85,9 @@ def add_contact():
             if user and verify_token(user, obj["token"]):
                 user.contacts.add(obj["phone_number"])
                 user.write_to_db()
+
+		increment_counter('contacts-count')
+
                 return "Great success"
             else:
                 return "Malformed request", 401
@@ -101,6 +108,9 @@ def remove_contact():
                 if obj["phone_number"] in user.contacts:
                     user.contacts.remove(obj["phone_number"])
                     user.write_to_db()
+
+		    decrement_counter('contacts-count')
+
                 return "Great success"
             else:
                 return "Malformed request", 401
@@ -108,25 +118,14 @@ def remove_contact():
             return "Malformed request", 401
 
 
-@app.route("/stats", methods=['POST'])
+@app.route("/stats", methods=['POST', 'GET'])
 def stats():
+    public_stats = ['users-count', 'contacts-count']
 
-    if not verify_structure(request.get_json(), ['names']):
-        return 'Bad JSON structure', 400
+    res_data = {}
 
-    names = request.get_json().get('names')
-
-    # Potential security flaw, check keys that are being checked before grabbing the data
-    # Would like an 'approved' list of keys that they should have access to
-    # I don't know what data will be accessed from here yet
-    counter_data = []
-    for name in names:
-        counter_data.append(get_counter(name))
-
-    res_data = {
-        'names_data' : counter_data,
-        'names' : names
-    }
+    for stat_name in public_stats:
+	res_data[stat_name] = get_counter(stat_name)
 
     return json.dumps(res_data), 200
 
