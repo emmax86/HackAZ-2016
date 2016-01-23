@@ -58,7 +58,7 @@ public class CustomActionbar extends RelativeLayout {
         //Don't forget this
         a.recycle();
 
-        this.setBackgroundColor(getResources().getColor(R.color.color5));
+        this.setBackgroundColor(getResources().getColor(R.color.white));
 
 
 
@@ -82,7 +82,7 @@ public class CustomActionbar extends RelativeLayout {
             this.backButtonImage.setImageDrawable(ContextCompat.getDrawable(context, R.mipmap.custom_white_up_button));
         }
         else if (backButtonColor.equals("purple")) {
-            this.backButtonImage.setImageDrawable(ContextCompat.getDrawable(context, R.mipmap.custom_white_up_button));
+            this.backButtonImage.setImageDrawable(ContextCompat.getDrawable(context, R.mipmap.custom_purple_up_button));
         }
         else {
             this.backButtonImage.setImageDrawable(ContextCompat.getDrawable(context, R.mipmap.custom_white_up_button));
