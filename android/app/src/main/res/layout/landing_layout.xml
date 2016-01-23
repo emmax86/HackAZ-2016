@@ -9,135 +9,13 @@
     android:background="@drawable/login_background"
     android:id="@+id/background">
 
-    <Space
-        android:layout_width="fill_parent"
-        android:layout_height="74dp"
-        android:layout_alignParentTop="true"
-        android:id="@+id/space_1"/>
-
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_below="@+id/space_1"
-        android:background="@drawable/speed_circle"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/speed"/>
-
-    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="45dp"
-        android:paddingRight="45dp"
-        android:paddingTop="4dp"
-        android:textSize="23dp"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_below="@+id/speed"
-        android:text="FAST"
-        android:id="@+id/speed_header"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="45dp"
-        android:paddingLeft="45dp"
-        android:layout_below="@+id/speed_header"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="2dp"
-        android:paddingBottom="18dp"
-        android:textSize="12dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:text="Using the newest databasing technology, we serve data as quickly as anybody"
-        android:id="@+id/speed_body"/>
-
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_below="@+id/speed_body"
-        android:background="@drawable/box_circle"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/box"/>
-
-    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="45dp"
-        android:paddingRight="45dp"
-        android:paddingTop="4dp"
-        android:textSize="23dp"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_below="@+id/box"
-        android:text="COMPACT"
-        android:id="@+id/box_header"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="45dp"
-        android:paddingLeft="45dp"
-        android:layout_below="@+id/box_header"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="2dp"
-        android:paddingBottom="18dp"
-        android:textSize="12dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:text="Our packets are small so your data plan can be too"
-        android:id="@+id/box_body"/>
-
     <ImageButton
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:background="@drawable/guard_dog_full_logo_white_plus"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true" />
-
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_below="@+id/box_body"
-        android:background="@drawable/chip_circle"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/chip"/>
-
-    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="45dp"
-        android:paddingRight="45dp"
-        android:paddingTop="4dp"
-        android:textSize="23dp"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_below="@+id/chip"
-        android:text="SMART"
-        android:id="@+id/chip_header"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="45dp"
-        android:paddingLeft="45dp"
-        android:layout_below="@+id/chip_header"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="2dp"
-        android:textSize="12dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:text="Using server hosted machine learning we customize the user experience"
-        android:id="@+id/chip_body"/>
-
-    <ImageButton
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/guard_dog_full_logo_white_plus"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:onClick="addDogs"/>
 
     <ImageButton
         android:layout_width="45dp"
@@ -146,6 +24,84 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:onClick="settingsPressed"/>
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="74dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/space_1"/>
+
+    <ImageView
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:layout_below="@+id/space_1"
+        android:background="@drawable/users_circle"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/users"/>
+
+    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="45dp"
+        android:paddingRight="45dp"
+        android:paddingTop="4dp"
+        android:textSize="30dp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@+id/users"
+        android:text="APP USERS"
+        android:id="@+id/users_header"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="45dp"
+        android:paddingLeft="45dp"
+        android:layout_below="@+id/users_header"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="2dp"
+        android:paddingBottom="38dp"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:id="@+id/users_body"/>
+
+    <ImageView
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:layout_below="@+id/users_body"
+        android:background="@drawable/dogs_circle"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/dogs"/>
+
+    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="45dp"
+        android:paddingRight="45dp"
+        android:paddingTop="4dp"
+        android:textSize="30dp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@+id/dogs"
+        android:text="APP GUARD DOGS"
+        android:id="@+id/dogs_header"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="45dp"
+        android:paddingLeft="45dp"
+        android:layout_below="@+id/dogs_header"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="2dp"
+        android:paddingBottom="18dp"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:id="@+id/dogs_body"/>
 
     <TextView
         android:layout_width="wrap_content"

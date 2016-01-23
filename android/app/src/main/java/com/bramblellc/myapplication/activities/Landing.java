@@ -14,6 +14,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -31,6 +32,8 @@ import java.util.Set;
 
 public class Landing extends Activity {
 
+    private TextView usersText;
+    private TextView dogsText;
     private GuardDogSensorListener guardDogSensorListener;
     private BatchBroadcastReceiver batchBroadcastReceiver;
     private AnalyzeBroadcastReceiver analyzeBroadcastReceiver;
@@ -39,9 +42,10 @@ public class Landing extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_layout);
+        usersText = (TextView) findViewById(R.id.users_body);
+        dogsText = (TextView) findViewById(R.id.dogs_body);
         SharedPreferences prefs = getSharedPreferences("GuardDog", MODE_PRIVATE);
         guardDogSensorListener = new GuardDogSensorListener(this, prefs.getString("username", "hodor"));
-
         batchBroadcastReceiver = new BatchBroadcastReceiver();
         analyzeBroadcastReceiver = new AnalyzeBroadcastReceiver();
 
@@ -63,6 +67,8 @@ public class Landing extends Activity {
     }
 
     public void init() {
+        animateTextView(0,1000,usersText);
+        animateTextView(0,1000,dogsText);
         boolean setup = getIntent().getBooleanExtra("setup", false);
         if (setup) {
             new MaterialDialog.Builder(this)
@@ -83,6 +89,24 @@ public class Landing extends Activity {
         }
     }
 
+    public void animateTextView(int initialValue, int finalValue, final TextView textview) {
+        DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator(0.8f);
+        int start = Math.min(initialValue, finalValue);
+        int end = Math.max(initialValue, finalValue);
+        int difference = Math.abs(finalValue - initialValue);
+        Handler handler = new Handler();
+        for (int count = start; count <= end; count++) {
+            int time = Math.round(decelerateInterpolator.getInterpolation((((float) count) / difference)) * 100) * count;
+            final int finalCount = ((initialValue > finalValue) ? initialValue - count : count);
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    textview.setText(finalCount + "");
+                }
+            }, time);
+        }
+    }
+
     @Override
     public void onStop() {
         super.onStop();
@@ -95,6 +119,10 @@ public class Landing extends Activity {
         super.onRestart();
         Log.d("Guard-Dog", "Resumed. Lmaoooooo.");
         startListening();
+    }
+
+    public void addDogs(View view) {
+        addDogsChain();
     }
 
     public void addDogsChain() {
@@ -133,23 +161,23 @@ public class Landing extends Activity {
 
                     @Override
                     public void onNegative(MaterialDialog dialog) {
-                        phoneRepairContact();
+                        emergencyContact();
                     }
                 })
                 .show();
     }
 
-    public void phoneRepairContact() {
+    public void emergencyContact() {
         new MaterialDialog.Builder(this)
-                .title("PHONE REPAIR")
-                .content("Do you have a warranty or insurance for your phone and want to add their " +
-                        "phone number to be contacted if your phone is damaged?")
+                .title("EMERGENCY CONTACT")
+                .content("Would you like to add an emergency contact that will be called in the " +
+                        "event of an incident?")
                 .positiveText("Yes")
                 .negativeText("No")
                 .callback(new MaterialDialog.ButtonCallback() {
                     @Override
                     public void onPositive(MaterialDialog dialog) {
-                        addPhoneService();
+                        addEmergencyContact();
                     }
 
                     @Override
@@ -174,10 +202,10 @@ public class Landing extends Activity {
         startListening();
     }
 
-    public void addPhoneService() {
+    public void addEmergencyContact() {
         new MaterialDialog.Builder(this)
-                .title("ADD A PHONE SERVICE CONTACT")
-                .content("Enter the phone number of the phone service provider you would like to add.")
+                .title("ADD AN EMERGENCY CONTACT")
+                .content("Enter the phone number of emergency contact you would like to add.")
                 .positiveText("Add")
                 .inputType(InputType.TYPE_CLASS_PHONE)
                 .input("phone number", "", new MaterialDialog.InputCallback() {

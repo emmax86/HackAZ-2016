@@ -109,14 +109,14 @@
         android:textStyle="bold"
         android:text="SIGN UP"
         android:layout_above="@+id/space_6"
-        android:id="@+id/toLogin"
+        android:id="@+id/signUp"
         android:onClick="continueSignUpPressed"/>
 
 
     <Space
         android:layout_width="fill_parent"
         android:layout_height="@dimen/space_height"
-        android:layout_above="@+id/toSignUp"
+        android:layout_above="@+id/backSignUp"
         android:id="@+id/space_6"/>
 
     <com.bramblellc.myapplication.layouts.ButtonWithTypeface
@@ -129,7 +129,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_above="@+id/space_5"
-        android:id="@+id/signUp"
+        android:id="@+id/backSignUp"
         android:onClick="backSignUpPressed"/>
 
     <Space
