@@ -1,10 +1,3 @@
-def parse_docs(pebble_data=None, phone_data=None):
-    if not pebble_data or not phone_data:
-        raise Exception('Expected phone and pebble data, didn\'t receive both')
-
-    pebble_datalayer = Data(pebble_data)
-    phone_datalayer = Data(phone_data)
-
 
 class Data(object):
     def __init__(self, phone_data, pebble_data):
