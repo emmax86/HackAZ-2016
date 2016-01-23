@@ -81,7 +81,7 @@ def add_contact():
             if user and verify_token(user, obj["token"]):
                 user.contacts.add(obj["phone_number"])
                 user.write_to_db()
-                return "Great success"
+                return json.dumps(list(user.contacts))
             else:
                 return "Malformed request", 401
         else:
@@ -101,7 +101,7 @@ def remove_contact():
                 if obj["phone_number"] in user.contacts:
                     user.contacts.remove(obj["phone_number"])
                     user.write_to_db()
-                return "Great success"
+                return json.dumps(list(user.contacts))
             else:
                 return "Malformed request", 401
         else:
