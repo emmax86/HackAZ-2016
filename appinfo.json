@@ -1,0 +1,19 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "taforrest1995@gmail.com",
+    "longName": "Guard Dog Pebble",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "Guard Dog Pebble",
+    "uuid": "06768ba3-ca31-4ddb-9b37-b3778da9b433",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
