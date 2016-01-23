@@ -17,7 +17,7 @@ def sign_up():
     elif request.method == "POST":
         obj = request.get_json(force=True)
         if obj and obj.get("username") and obj.get("phone_number") and obj.get("password"):
-            if User.get_from_db(obj["username"]):
+            if not User.get_from_db(obj["username"]):
                 new_user = User()
                 new_user.username = obj["username"]
                 new_user.phone_number = obj["phone_number"]
@@ -37,9 +37,13 @@ def log_in():
     elif request.method == "POST":
         obj = request.get_json(force=True)
         if obj and obj.get("username") and obj.get("password"):
-            return obj["username"] + obj["password"]
+            user = User.get_from_db(obj["username"])
+            if user and user.verify_password(obj["password"]):
+                return "Great success"
+            else:
+                return "Invalid username/password combo", 401
         else:
-            return "DEAD"
+            return "Malformed request", 401
 
 
 @app.route("/stats", methods=['POST'])
