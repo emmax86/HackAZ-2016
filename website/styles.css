@@ -11,7 +11,7 @@ html, body {
     width: 100%;
 }
 
-#phi {
+#gd {
     background: url(images/triangle_background.png) no-repeat center center fixed;
     display: table;
     height: 100%;
@@ -24,7 +24,12 @@ html, body {
 }
 
 #fea {
-    
+    direction: table;
+    height: 720px;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+
 }
 
 #get {
