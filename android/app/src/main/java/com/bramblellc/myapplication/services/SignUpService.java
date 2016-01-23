@@ -36,7 +36,7 @@ public class SignUpService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         try {
-            Route route = new Route("http://guarddog.stevex86.com/register");
+            Route route = new Route("http://guarddog.stevex86.com/sign_up");
             Request request = new Request(route, new Post());
 
             JSONObject jsonObject = new JSONObject();
@@ -54,10 +54,12 @@ public class SignUpService extends IntentService {
 
             Intent localIntent = new Intent(ActionConstants.REGISTER_ACTION);
             if (response.getResponseCode() < 400) {
+                localIntent.putExtra("successful", true);
                 JSONObject responseObject = new JSONObject(response.getBodyContent().getOutputString());
                 localIntent.putExtra("token", responseObject.getString("token"));
             }
             else {
+                localIntent.putExtra("successful", false);
                 localIntent.putExtra("message", response.getBodyContent().getOutputString());
             }
             LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
