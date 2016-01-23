@@ -1,0 +1,17 @@
+# Default ignored files
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+.idea/
+app/app.iml
+*.iml
+*.apk
+
+# Windows
+Thumbs.db
+
+# Build files
+app/manifest-merger-release-report.txt
