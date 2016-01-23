@@ -88,6 +88,26 @@ def add_contact():
             return "Malformed request", 401
 
 
+@app.route("/remove_contact", methods=["GET", "POST"])
+def remove_contact():
+    if request.method == "GET":
+        return "WOLOL"
+    elif request.method == "POST":
+        obj = request.get_json(force=True)
+        if obj and obj.get("token") and obj.get("phone_number"):
+            token_elements = obj.get("token").split(":")
+            user = User.get_from_db(token_elements[0])
+            if user and verify_token(user, obj["token"]):
+                if obj["phone_number"] in user.contacts:
+                    user.contacts.remove(obj["phone_number"])
+                    user.write_to_db()
+                return "Great success"
+            else:
+                return "Malformed request", 401
+        else:
+            return "Malformed request", 401
+
+
 @app.route("/stats", methods=['POST'])
 def stats():
 

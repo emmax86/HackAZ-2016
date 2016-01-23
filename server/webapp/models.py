@@ -22,6 +22,7 @@ class User(object):
     def write_to_db(self):
         user_dict = {"password_hash": self.password_hash, "phone_number": self.phone_number, "secret_key": self.secret_key}
         redis_db.hmset(self.username, user_dict)
+        redis_db.delete(self.username + ":contacts")
         if len(self.contacts):
             redis_db.sadd(self.username + ":contacts", *self.contacts)
 
