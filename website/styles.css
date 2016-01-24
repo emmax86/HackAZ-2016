@@ -3,6 +3,12 @@ html, body {
     width: 100%;
 }
 
+/* font */
+@font-face {
+    font-family: 'hip';
+    src: url(fonts/SIMPLIFICA_Typeface.ttf);
+}
+
 /* paralax shit */
 .para-section {
     padding: 50px 0;
@@ -45,6 +51,14 @@ html, body {
 }
 
 
+
+ .navbar-brand  {
+    position: absolute;
+    top: -5%;
+    margin-bottom: -25px !important;  /* 50% of your logo width */
+    display: block;
+}
+
 /* navbar */
 .navbar-default {
     background-color: #FFFFFF;
@@ -54,12 +68,12 @@ html, body {
 .navbar-default .navbar-brand {
     color: #777;
 }
-div.container-fluid div.navbar-header .navbar-brand {
+div.container div.navbar-header .navbar-brand {
   color: #8559D6;
     
 }
 
-div.container-fluid div.navbar-header .navbar-brand a:hover {
+div.container div.navbar-header .navbar-brand a:hover {
   color: #00AFBF;
     
 }
