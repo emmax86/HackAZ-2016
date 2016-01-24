@@ -8,6 +8,7 @@ import android.util.Log;
 import com.bramblellc.myapplication.data.Globals;
 import com.stevex86.napper.http.connection.ConnectionHandler;
 import com.stevex86.napper.http.elements.content.JsonBodyContent;
+import com.stevex86.napper.http.elements.content.TextBodyContent;
 import com.stevex86.napper.http.elements.method.Get;
 import com.stevex86.napper.http.elements.method.Post;
 import com.stevex86.napper.http.elements.route.Route;
@@ -40,14 +41,12 @@ public class StatsRetrievalService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         try {
-            Route route = new Route("http://guarddog.stevex86.com/remove_contact");
+            Route route = new Route("http://guarddog.stevex86.com/stats");
             Request request = new Request(route, new Get());
 
-            JSONObject jsonObject = new JSONObject();
 
-            JsonBodyContent content = new JsonBodyContent(jsonObject.toString());
-
-            request.setBodyContent(content);
+            TextBodyContent bodyContent = new TextBodyContent();
+            request.setBodyContent(bodyContent);
 
             ConnectionHandler connectionHandler = new ConnectionHandler(request);
 
@@ -63,6 +62,7 @@ public class StatsRetrievalService extends IntentService {
         }
 
         catch (IOException e) {
+            e.printStackTrace();
             Log.d("Guard-Dog", "Ayy lmao, IOException thrown");
         }
     }
