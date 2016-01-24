@@ -12,6 +12,7 @@ import com.stevex86.napper.http.elements.route.Route;
 import com.stevex86.napper.request.Request;
 import com.stevex86.napper.response.Response;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,10 +31,17 @@ public class AnalyzeService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         try {
-            Route route = new Route("http://guarddog.stevex86.com/analyze");
+            Route route = new Route("http://guarddog.stevex86.com/classify");
             Request request = new Request(route, new Post());
 
-            JsonBodyContent content = new JsonBodyContent(intent.getStringExtra("content"));
+            JSONObject jsonObject = new JSONObject();
+            JSONArray batch_phone = new JSONArray(intent.getStringExtra("batch-phone"));
+            JSONArray batch_watch = new JSONArray(intent.getStringExtra("batch-watch"));
+            jsonObject.put("batch-phone", batch_phone);
+            jsonObject.put("batch-watch", batch_watch);
+            jsonObject.put("token", intent.getStringExtra("token"));
+
+            JsonBodyContent content = new JsonBodyContent(jsonObject.toString());
 
             request.setBodyContent(content);
 
@@ -42,9 +50,9 @@ public class AnalyzeService extends IntentService {
             Response response = connectionHandler.getResponse();
 
             Intent localIntent = new Intent(ActionConstants.ANALYZE_ACTION);
-            JSONObject jsonObject = new JSONObject(response.getBodyContent().getOutputString());
-            localIntent.putExtra("guess", jsonObject.getBoolean("guess"));
-            localIntent.putExtra("content", jsonObject.getString("content"));
+            JSONObject responseJSON = new JSONObject(response.getBodyContent().getOutputString());
+            localIntent.putExtra("guess", responseJSON.getBoolean("guess"));
+            localIntent.putExtra("content", responseJSON.getJSONObject("content").toString());
             LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
         }
         catch (IOException e) {

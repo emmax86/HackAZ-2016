@@ -52,7 +52,7 @@ public class Landing extends Activity {
         usersText = (TextView) findViewById(R.id.users_body);
         dogsText = (TextView) findViewById(R.id.dogs_body);
         SharedPreferences prefs = getSharedPreferences("GuardDog", MODE_PRIVATE);
-        guardDogSensorListener = new GuardDogSensorListener(this, prefs.getString("username", "hodor"));
+        guardDogSensorListener = new GuardDogSensorListener(this, Globals.getToken());
         batchBroadcastReceiver = new BatchBroadcastReceiver();
         analyzeBroadcastReceiver = new AnalyzeBroadcastReceiver();
 
@@ -242,7 +242,7 @@ public class Landing extends Activity {
                         @Override
                         public void onPositive(MaterialDialog dialog) {
                             try {
-                                jsonObject.put("real", false);
+                                jsonObject.put("answer", false);
                                 Intent localIntent = new Intent(Landing.this, DataService.class);
                                 localIntent.putExtra("content", jsonObject.toString());
                                 dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -261,7 +261,7 @@ public class Landing extends Activity {
                         @Override
                         public void onNegative(MaterialDialog dialog) {
                             try {
-                                jsonObject.put("real", true);
+                                jsonObject.put("answer", true);
                                 Intent localIntent = new Intent(Landing.this, DataService.class);
                                 localIntent.putExtra("content", jsonObject.toString());
                                 dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -293,7 +293,7 @@ public class Landing extends Activity {
                 public void onDismiss(DialogInterface dialog) {
                     try {
                         handler.removeCallbacks(runnable);
-                        jsonObject.put("real", true);
+                        jsonObject.put("answer", true);
                         Intent localIntent = new Intent(Landing.this, DataService.class);
                         localIntent.putExtra("content", jsonObject.toString());
                         startService(localIntent);
@@ -334,9 +334,8 @@ public class Landing extends Activity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            String content = intent.getStringExtra("content");
             Intent localIntent = new Intent(Landing.this, AnalyzeService.class);
-            localIntent.putExtra("content", content);
+            localIntent.putExtras(intent);
             IntentFilter filter = new IntentFilter(ActionConstants.ANALYZE_ACTION);
             LocalBroadcastManager.getInstance(Landing.this).unregisterReceiver(analyzeBroadcastReceiver);
             analyzeBroadcastReceiver = new AnalyzeBroadcastReceiver();

@@ -5,12 +5,14 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.support.wearable.view.BoxInsetLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -30,7 +32,7 @@ public class MainActivity extends WearableActivity implements GoogleApiClient.Co
             new SimpleDateFormat("HH:mm", Locale.US);
 
     private BoxInsetLayout mContainerView;
-    private Button button;
+    private ImageButton button;
     private GuardDogSensorListener listener;
     private boolean listening;
     GoogleApiClient googleApiClient;
@@ -39,7 +41,7 @@ public class MainActivity extends WearableActivity implements GoogleApiClient.Co
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = (Button) findViewById(R.id.start_button);
+        button = (ImageButton) findViewById(R.id.start_button);
         listener = new GuardDogSensorListener(this);
         listening = false;
         setAmbientEnabled();
@@ -95,11 +97,9 @@ public class MainActivity extends WearableActivity implements GoogleApiClient.Co
     public void toggleListening(View view) {
         if (listening) {
             listener.stopListening();
-            button.setText("Start Listening");
             listening = false;
         } else {
             listener.startListening();
-            button.setText("Stop listening");
             listening = true;
         }
     }

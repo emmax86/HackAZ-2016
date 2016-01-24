@@ -1,5 +1,6 @@
 package com.bramblellc.myapplication.services;
 
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.android.gms.wearable.MessageEvent;
@@ -11,6 +12,9 @@ public class ListenerService extends WearableListenerService {
     public void onMessageReceived(MessageEvent messageEvent) {
         if (messageEvent.getPath().equals("/message_path")) {
             final String message = new String(messageEvent.getData());
+            Intent localIntent = new Intent("WOLOLOL");
+            localIntent.putExtra("batch", message);
+            startService(localIntent);
             Log.v("myTag", "Message received on watch is: " + message);
         }
         else {

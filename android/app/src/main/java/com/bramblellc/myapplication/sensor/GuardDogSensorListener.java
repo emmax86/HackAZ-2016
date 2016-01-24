@@ -1,12 +1,18 @@
 package com.bramblellc.myapplication.sensor;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import com.bramblellc.myapplication.services.ActionConstants;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
@@ -16,7 +22,7 @@ public class GuardDogSensorListener implements SensorEventListener {
 
     private Context ctx;
 
-    private String username;
+    private String token;
 
     private float mLastX, mLastY, mLastZ;
     private boolean initialized;
@@ -31,18 +37,23 @@ public class GuardDogSensorListener implements SensorEventListener {
 
     private boolean trial_in_progress;
 
+    private BatchReceiver batchReceiver;
 
+    private LinkedList<Batch> batch_queue;
 
     private LinkedList<Frame> phone_frames;
 
-    public GuardDogSensorListener(Context ctx, String username) {
+    public GuardDogSensorListener(Context ctx, String token) {
         this.ctx = ctx;
-        this.username = username;
+        this.token = token;
         initialized = false;
         sensorManager = (SensorManager) ctx.getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         phone_frames = new LinkedList<Frame>();
+        batch_queue = new LinkedList<Batch>();
         last_phone_record = 0;
+        batchReceiver = new BatchReceiver();
+        LocalBroadcastManager.getInstance(ctx).registerReceiver(batchReceiver, new IntentFilter("WOLOLOL"));
     }
 
     public void startListening() {
@@ -81,75 +92,21 @@ public class GuardDogSensorListener implements SensorEventListener {
                 phone_frames.add(frame);
             }
         }
-//        else {
-//            mLastX = x;
-//            mLastY = y;
-//            mLastZ = z;
-//            long current = System.currentTimeMillis();
-//            last_time = current;
-//
-//            if (trial_in_progress)
-//            {
-//                long current_time = System.currentTimeMillis();
-//                // Push the data to the list
-//                if (index < phone_frames.length) {
-//                    if (current_time - last_phone_record >= 200) {
-//                        Frame c_frame = new Frame();
-//                        c_frame.accel_x = x;
-//                        c_frame.accel_y = y;
-//                        c_frame.accel_z = z;
-//                        c_frame.batch_order = index;
-//                        phone_frames.add(c_frame);
-//                        index++;
-//                        last_phone_record = current_time;
-//                        if (index >= 25) {
-//                            stopListening();
-//                            broadcastFrames();
-//                        }
-//                    }
-//                } else {
-//                    trial_in_progress = false;
-//                }
-//
-//            }
-//        }
-    }
 
-//    public void broadcastFrames() {
-//        try {
-//            Batch b = createBatch(true);
-//            JSONObject jsonObject = new JSONObject();
-//            jsonObject.put("username", username);
-//            JSONArray array = new JSONArray();
-//            for (Object f : b.frames) {
-//                JSONObject frameObject = new JSONObject();
-//                frameObject.put("accel_x", f.accel_x);
-//                frameObject.put("accel_y", f.accel_y);
-//                frameObject.put("accel_z", f.accel_z);
-//                frameObject.put("batch_order", f.batch_order);
-//                array.put(frameObject);
-//            }
-//            jsonObject.put("frames", array);
-//            Intent localIntent = new Intent(ActionConstants.SENSOR_ACTION);
-//            localIntent.putExtra("content", jsonObject.toString());
-//            LocalBroadcastManager.getInstance(ctx).sendBroadcast(localIntent);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private Batch createBatch(boolean real) {
-//        try{
-//            Batch b = new Batch();
-//            b.real = real;
-//            b.frames = phone_frames;
-//            System.out.println(b.toString());
-//            return b;
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        return null;
-//    }
+        if (phone_frames.size() == 50) {
+            Batch batch = new Batch();
+            int i = 0;
+            for (Frame frame : phone_frames) {
+                batch.frames[i] = frame;
+                i++;
+            }
+            batch_queue.add(batch);
+
+            for (i = 0; i < 10; i++) {
+                phone_frames.pop();
+            }
+        }
+    }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -189,6 +146,20 @@ public class GuardDogSensorListener implements SensorEventListener {
         public String toString() {
             return timestamp + " " + accel_x + " " + accel_y + " " + accel_z;
         }
+    }
+
+    private class BatchReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String batch = intent.getStringExtra("batch");
+            Intent localIntent = new Intent(ActionConstants.SENSOR_ACTION);
+            localIntent.putExtra("batch-phone", batch_queue.pop().toString());
+            localIntent.putExtra("batch-watch", batch);
+            localIntent.putExtra("token", token);
+            LocalBroadcastManager.getInstance(GuardDogSensorListener.this.ctx).sendBroadcast(localIntent);
+        }
+
     }
 
 }

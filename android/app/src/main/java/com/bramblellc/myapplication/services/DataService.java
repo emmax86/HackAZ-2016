@@ -32,7 +32,7 @@ public class DataService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         try {
-            Route route = new Route("http://guarddog.stevex86.com/train");
+            Route route = new Route("http://guarddog.stevex86.com/correct");
             Request request = new Request(route, new Post());
 
             JsonBodyContent content = new JsonBodyContent(intent.getStringExtra("content"));

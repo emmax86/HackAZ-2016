@@ -136,7 +136,7 @@ def classify():
             d = regression_engine.predict(data)
             print d
             guess = bool(d)
-            response_dict = {"guess": guess}
+            response_dict = {"guess": guess, "content": obj}
             return json.dumps(response_dict)
         else:
             return "Could not verify user", 401
