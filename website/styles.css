@@ -34,6 +34,27 @@ html, body {
 .gd button {
     color: #8559D6;
 }
+
+.mocks h1 {
+    font-size: 80px;
+    color: #000000;
+}
+.mocks h2 {
+    font-size: 50px;
+    color: #8559D6;
+}
+.mocks h3 {
+    font-size: 30px;
+    color: #00AFBF;
+}
+.mocks p {
+    font-size: 30px;
+    color: #8559D6;
+}
+
+.mocks button {
+    color: #8559D6;
+}
 .main-nav li {
     font-size: 20px;
 }
@@ -51,9 +72,9 @@ html, body {
     background-size: cover;
 }
 
-.fea {
+.mocks {
     background: url(images/White.png);
-    height: 1000px;
+    height: 900px;
     position: relative;
     width: 100%;
 }
