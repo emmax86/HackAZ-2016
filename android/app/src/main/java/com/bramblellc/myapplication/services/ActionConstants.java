@@ -10,5 +10,6 @@ public class ActionConstants {
     public static final String ADD_CONTACT_ACTION = "com.bramblellc.myapplication.services.ADD_CONTACT_ACTION";
     public static final String REMOVE_CONTACT_ACTION = "com.bramblellc.myapplication.services.REMOVE_CONTACT_ACTION";
     public static final String STATS_ACTION = "com.bramblellc.myapplication.services.STATS_ACTION";
+    public static final String WOL = "com.bramblellc.myapplication.services.WOLOLOL";
 
 }

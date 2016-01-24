@@ -53,7 +53,7 @@ public class GuardDogSensorListener implements SensorEventListener {
         batch_queue = new LinkedList<Batch>();
         last_phone_record = 0;
         batchReceiver = new BatchReceiver();
-        LocalBroadcastManager.getInstance(ctx).registerReceiver(batchReceiver, new IntentFilter("WOLOLOL"));
+        LocalBroadcastManager.getInstance(ctx).registerReceiver(batchReceiver, new IntentFilter(ActionConstants.WOL));
     }
 
     public void startListening() {
