@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomNoBar" parent="android:Theme.Holo.Light">
+        <item name="android:windowDisablePreview">true</item>
+
+        <!--alert dialog customizations-->
+        <item name="md_title_color">@color/color3</item>
+        <item name="md_positive_color">@color/color4</item>
+        <item name="md_neutral_color">@color/color4</item>
+        <item name="md_negative_color">@color/color4</item>
+        <item name="md_widget_color">@color/color4</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/color1</item>
+    </style>
+
+</resources>
