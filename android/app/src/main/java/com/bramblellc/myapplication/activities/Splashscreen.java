@@ -56,8 +56,8 @@ public class Splashscreen extends Activity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            Globals.contactsCounter = intent.getIntExtra("contacts-counter", 0);
-            Globals.userCounter = intent.getIntExtra("user-counter", 0);
+            Globals.userCounter = intent.getIntExtra("users-count", 0);
+            Globals.contactsCounter = intent.getIntExtra("contacts-count", 0);
             LocalBroadcastManager.getInstance(Splashscreen.this).unregisterReceiver(statsReceiver);
             if (other_finished) {
                 Intent accountPortalIntent = new Intent(Splashscreen.this, AccountPortal.class);
