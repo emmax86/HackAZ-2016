@@ -22,6 +22,7 @@ html, body {
     margin: 0 auto;
 }
 
+
 .gd h1 {
     font-size: 80px;
     color: white;
@@ -30,10 +31,10 @@ html, body {
     font-size: 30px;
     color: white;
 }
-
 .gd button {
     color: #8559D6;
 }
+
 
 .mocks h1 {
     font-size: 80px;
@@ -51,10 +52,28 @@ html, body {
     font-size: 30px;
     color: #8559D6;
 }
-
 .mocks button {
     color: #8559D6;
 }
+
+
+.fea h1 {
+    font-size: 80px;
+    color: white;
+}
+.fea h2 {
+    font-size: 60px;
+    color: white;
+}
+.fea h3 {
+    font-size: 35px;
+    color: white;
+}
+.fea button {
+    color: #8559D6;
+}
+
+
 .main-nav li {
     font-size: 20px;
 }
@@ -79,10 +98,10 @@ html, body {
     width: 100%;
 }
 
-.imp {
+.fea {
     background: url(images/purple-dotted-background.jpg) no-repeat center center fixed;
     display: table;
-    height: 100%;
+    height: 80%;
     position: relative;
     width: 100%;
     -webkit-background-size: cover;
