@@ -203,7 +203,7 @@ public class TestEnvironment extends Activity implements SensorEventListener {
         }
     }
 
-    class ListenerService extends WearableListenerService {
+    public class ListenerService extends WearableListenerService {
 
         @Override
         public void onMessageReceived(MessageEvent messageEvent) {
