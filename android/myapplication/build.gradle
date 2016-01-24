@@ -6,7 +6,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.sodaasu.myapplication"
+        applicationId "com.bramblellc.myapplication"
         minSdkVersion 20
         targetSdkVersion 23
         versionCode 1

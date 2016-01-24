@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sodaasu.myapplication.MainActivity"
+    tools:context="com.bramblellc.myapplication.MainActivity"
     tools:deviceIds="wear">
 
     <Button
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Start Listening"
-        android:id="@+id/start_button" />
+        android:id="@+id/start_button"
+        android:onClick="toggleListening"/>
 
 </android.support.wearable.view.BoxInsetLayout>
