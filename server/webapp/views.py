@@ -172,6 +172,7 @@ def correct():
 @app.route("/train", methods=["POST"])
 def train():
     obj = request.get_json(force=True)
+    print obj.get("batch-phone") + " " + obj.get("batch-pebble") + " " + obj.get("answer")
     if obj and obj.get("batch-phone") and obj.get("batch-pebble") and obj.get("answer"):
         batch_phone = obj["batch-phone"]
         batch_pebble = obj["batch-pebble"]
