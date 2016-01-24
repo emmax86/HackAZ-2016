@@ -7,6 +7,9 @@
 	<meta name="viewport" content="width=device-width, inital-scale=1.0, user-scalable=no"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="styles.css">
+	<script type="text/javascript" src="jquery.localscroll-1.2.7-min.js"></script>
+    <script type="text/javascript" src="jquery.scrollTo-1.4.2-min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<script type="text/javascript">
       jQuery(document).ready(function($) {
       $(".scroll").click(function(event) {
@@ -34,14 +37,14 @@
 							<img class="img" style="max-width:100px;margin-top: -7px" alt="Guard Dog" src="images/guard_dog_full_logo_purple_small.png"> 
 						</a>
 					</li>
-					<li><a style="margin-left: 50px" href="#theapp">The App</a></li>
-					<li><a href="#features">Features</a></li>
-					<li><a href="#implentation">Technology Stack</a></li>
-					<li><a href="#team">Team</a></li>
+					<li><a style="margin-left: 50px" href="#mocks" class="scroll" data-target="mocks">The App</a></li>
+					<li><a href="#features" data-target="features" class="scroll">Features</a></li>
+					<li><a href="#stack" data-target="stack" class="scroll">Technology Stack</a></li>
+					<li><a href="#team" data-target="tea," class="scroll">Team</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="#mocks">Get it today!</a>
+						<a href="#mocks" data-target="mocks" class="scroll">Get it today!</a>
 					</li>
 				</ul>
 			</div>
@@ -55,14 +58,15 @@
 				<div class="col-lg-3 col-centered">
 					<h1 class="text-center" style="margin-top: 200px" >Guard Dog</h1>
 					<p class="text-center" style="margin-bottom:30px">Keeping the dangers of life in the dog house</p>
-					<button class="btn btn-lg btn-block btn-default col-centered">Learn More</button>
+					<button class="btn btn-lg btn-block btn-default col-centered scroll" href="#mocks" data-target="mocks">Learn More</button>
 				</div>	
 			</div>
 		</div>	
 	</div>
 
 	<!--MockUps-->
-	<div class="para-section mocks" id="mocks">
+	<div id="mocks">
+	<div class="para-section mocks">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -90,9 +94,11 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 	<!--Features-->
-	<div class="para-section fea" id="features">
+	<div id="features">
+	<div class="para-section fea">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -149,10 +155,12 @@
 			</div>
 		</div>	
 	</div>
+</div>
 
 
 	<!--TechStack-->
-	<div class="para-section stk" id="stack">
+	<div id="stack">
+	<div class="para-section stk">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -196,10 +204,12 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 	
 	<!--Team-->
-	<div class="para-section tm" id="team">
+	<div id="team">
+	<div class="para-section tm">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -237,6 +247,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 
 	<!--Footer-->
@@ -277,9 +288,6 @@
 		</div>
 	</div>
 
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>
