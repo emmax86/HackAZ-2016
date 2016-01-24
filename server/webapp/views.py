@@ -66,6 +66,7 @@ def logout():
         else:
             print "Malformed request", 401
 
+
 @app.route("/modify_emergency_contact", methods=["POST"])
 def add_contact():
     obj = request.get_json(force=True)
@@ -73,13 +74,14 @@ def add_contact():
         token_elements = obj.get("token").split(":")
         user = User.get_from_db(token_elements[0])
         if user and verify_token(user, obj["token"]):
-            user.emergency_contact = obj["emergency_contact"])
+            user.emergency_contact = obj["emergency_contact"]
             user.write_to_db()
             return json.dumps(user.emergency_contact)
         else:
             return "Could not verify user", 401
     else:
         return "Malformed request", 401
+
 
 @app.route("/add_contact", methods=["POST"])
 def add_contact():
