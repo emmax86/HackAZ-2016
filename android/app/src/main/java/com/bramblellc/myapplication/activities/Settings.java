@@ -34,7 +34,7 @@ public class Settings extends Activity {
     private ImageButton myDogsFullWidthButton;
     private ImageButton phoneServicesFullWidthButton;
     private ImageButton logoutFullWidthButton;
-    private FullWidthButton testFullWidthButton;
+    //private FullWidthButton testFullWidthButton;
 
     private IntentFilter addContactFilter;
     private IntentFilter removeContactFilter;
@@ -52,7 +52,7 @@ public class Settings extends Activity {
         myDogsFullWidthButton = (ImageButton) findViewById(R.id.my_dogs_full_width_button);
         phoneServicesFullWidthButton = (ImageButton) findViewById(R.id.phone_aid_input_full_width_button);
         logoutFullWidthButton = (ImageButton) findViewById(R.id.logout_full_width_button);
-        testFullWidthButton = (FullWidthButton) findViewById(R.id.test_full_width_button);
+        //testFullWidthButton = (FullWidthButton) findViewById(R.id.test_full_width_button);
 
         settingsCustomActionbar.getBackButton().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,12 +81,14 @@ public class Settings extends Activity {
             }
         });
 
+        /*
         testFullWidthButton.getFullWidthButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 testFullWidthPressed(v);
             }
         });
+        */
     }
 
     public void testFullWidthPressed(View view) {
