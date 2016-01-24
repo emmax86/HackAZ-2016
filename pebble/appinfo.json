@@ -1,19 +1,18 @@
 {
-    "appKeys": {},
-    "capabilities": [
-        ""
-    ],
-    "companyName": "BrambleLLC",
-    "longName": "Guard Dog Pebble",
-    "projectType": "native",
-    "resources": {
-        "media": []
-    },
-    "sdkVersion": "3",
-    "shortName": "Guard Dog Pebble",
-    "uuid": "06768ba3-ca31-4ddb-9b37-b3778da9b433",
-    "versionLabel": "1.0",
-    "watchapp": {
-        "watchface": false
-    }
+  "uuid": "4d1b828b-347c-4424-8d56-47691c148ca3",
+  "shortName": "pebble",
+  "longName": "pebble",
+  "companyName": "MakeAwesomeHappen",
+  "versionLabel": "1.0",
+  "sdkVersion": "3",
+  "targetPlatforms": ["aplite", "basalt", "chalk"],
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  }
 }
