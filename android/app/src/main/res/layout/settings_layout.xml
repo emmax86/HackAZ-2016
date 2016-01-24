@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="2dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@mipmap/login_background">
+
+    <com.bramblellc.myapplication.layouts.CustomActionbar
+        android:id="@+id/settings_custom_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:text="Settings"
+        android:textColor="@color/primary_color"
+        app:backgroundType="2"
+        app:backButtonColor="purple"/>
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/settings_custom_actionbar"
+        android:id="@+id/space1"/>
+
+    <ImageButton
+        android:id="@+id/my_dogs_full_width_button"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/space1"
+        android:text="Remove Guard Dog"
+        android:background="@drawable/guard_dog_full_logo_white_minus"/>
+
+    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REMOVE GUARD DOG"
+        android:paddingTop="15dp"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_below="@id/my_dogs_full_width_button"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/remove_header"/>
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/remove_header"
+        android:id="@+id/space2"/>
+
+    <ImageButton
+        android:id="@+id/phone_aid_input_full_width_button"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/space2"
+        android:text="Emergency Contact"
+        android:background="@drawable/emg" />
+
+    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EDIT EMERGENCY PHONE CONTACT"
+        android:paddingTop="15dp"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_below="@id/phone_aid_input_full_width_button"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/emg_header"/>
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/emg_header"
+        android:id="@+id/space3"/>
+
+    <ImageButton
+        android:id="@+id/logout_full_width_button"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_below="@+id/space3"
+        android:text="Log out"
+        android:background="@drawable/logout"
+        android:layout_centerHorizontal="true"/>
+
+    <com.bramblellc.myapplication.layouts.TextViewWithTypeface
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGOUT"
+        android:paddingTop="15dp"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_below="@id/logout_full_width_button"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/logout_header"/>
+
+
+
+    <com.bramblellc.myapplication.layouts.FullWidthButton
+        android:id="@+id/test_full_width_button"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_below="@+id/logout_header"
+        android:text="TEST ENVIRONMENT"
+        android:onClick="testFullWidthPressed"
+        app:lowerLine="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:text="Version 0.1.0 © Bramble LLC"/>
+
+</RelativeLayout>

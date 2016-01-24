@@ -1,0 +1,285 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'hip';
+}
+
+/* font */
+@font-face {
+    font-family: 'hip';
+    src: url(fonts/SIMPLIFICA_Typeface.ttf);
+}
+
+/* paralax shit */
+.para-section {
+    padding: 50px 0;
+    width: 100%;
+}
+
+/* center shit */
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.main-nav li {
+    font-size: 20px;
+}
+
+
+.gd {
+    background: url(images/triangle_background.png) no-repeat center fixed;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.gd h1 {
+    font-size: 80px;
+    color: white;
+}
+.gd p {
+    font-size: 30px;
+    color: white;
+}
+.gd button {
+    color: #8559D6;
+}
+
+
+
+.mocks {
+    background: url(images/White.png);
+    height: 900px;
+    position: relative;
+    width: 100%;
+}
+.mocks h1 {
+    font-size: 80px;
+    color: #000000;
+}
+.mocks h2 {
+    font-size: 50px;
+    color: #8559D6;
+}
+.mocks h3 {
+    font-size: 35px;
+    color: #00AFBF;
+}
+.mocks p {
+    font-size: 30px;
+    color: #8559D6;
+}
+.mocks button {
+    color: #8559D6;
+}
+
+
+
+.fea {
+    background: url(images/purple-dotted-background.jpg) no-repeat center center fixed;
+    display: table;
+    height: 80%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.fea h1 {
+    font-size: 80px;
+    color: white;
+}
+.fea h2 {
+    font-size: 60px;
+    color: white;
+}
+.fea h3 {
+    font-size: 35px;
+    color: white;
+}
+.fea button {
+    color: #8559D6;
+}
+
+
+
+.stk {
+    background: url(images/world_map.png);
+    height: 550px;
+    position: relative;
+    width: 100%;
+}
+.stk h1 {
+    font-size: 100px;
+    color: #000000;
+}
+.stk h2 {
+    font-size: 40px;
+    color: #000000;
+}
+.stk h3 {
+    font-size: 30px;
+    color: #00AFBF;
+}
+.stk p {
+    font-size: 30px;
+    color: #8559D6;
+}
+.stk button {
+    color: #8559D6;
+}
+
+
+
+.tm {
+    background: url(images/team_background.jpg) no-repeat center center fixed;
+    display: table;
+    height: 70%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.tm h1 {
+    font-size: 80px;
+    color: white;
+}
+.tm h2 {
+    font-size: 50px;
+    color: white;
+}
+.tm h3 {
+    font-size: 35px;
+    color: white;
+}
+.tm button {
+    color: #8559D6;
+}
+
+
+
+.foot {
+    background: url(images/white.png);
+    height: 125px;
+    position: relative;
+    width: 100%;
+}
+.foot h1 {
+    font-size: 100px;
+    color: #000000;
+}
+.foot h2 {
+    font-size: 40px;
+    color: #000000;
+}
+.foot h3 {
+    font-size: 20px;
+    color: #000000;
+}
+.foot p {
+    font-size: 20px;
+    color: #000000;
+}
+.foot button {
+    color: #000000;
+}
+
+
+ .navbar-brand  {
+    position: absolute;
+    top: -10%;
+    left: 50px;
+    margin-bottom: -25px !important;  /* 50% of your logo width */
+    display: block;
+}
+
+/* navbar */
+.navbar-default {
+    background-color: #FFFFFF;
+    border-color: #E7E7E7;
+}
+/* title */
+.navbar-default .navbar-brand {
+    color: #777;
+}
+div.container div.navbar-header .navbar-brand {
+  color: #8559D6;
+    
+}
+
+div.container div.navbar-header .navbar-brand a:hover {
+  color: #00AFBF;
+    
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5E5E5E;
+}
+.navbar-default .navbar-header button.navbar-toggle span.icon-bar {
+    color: #8559D6;
+    background-color: #8559D6;
+}
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: #8559D6;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #00AFBF;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #5E5E5E;
+    background-color: #5E5E5E;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #5E5E5E;
+    background-color: #5E5E5E;
+}
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+.navbar-default .navbar-nav > .open > a .caret, 
+.navbar-default .navbar-nav > .open > a:hover .caret, 
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
+/* mobile version */
+.navbar-default .navbar-toggle {
+    border-color: #DDD;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #DDD;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #CCC;
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #777;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333;
+    }
+}
