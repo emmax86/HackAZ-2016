@@ -21,6 +21,9 @@ html, body {
     float: none;
     margin: 0 auto;
 }
+.main-nav li {
+    font-size: 20px;
+}
 
 .gd {
     background: url(images/triangle_background.png) no-repeat center fixed;
