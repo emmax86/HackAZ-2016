@@ -81,6 +81,9 @@
         <service android:name=".services.RemoveContactService"
             android:exported="false"/>
 
+        <service android:name=".services.StatsRetrievalService"
+            android:exported="false"/>
+
         <receiver
             android:name=".receivers.BootUpReceiver"
             android:enabled="true"

@@ -68,7 +68,7 @@ def logout():
 
 
 @app.route("/modify_emergency_contact", methods=["POST"])
-def add_contact():
+def add_emergency_contact():
     obj = request.get_json(force=True)
     if obj and obj.get("token") and obj.get("phone_number"):
         token_elements = obj.get("token").split(":")
@@ -189,7 +189,7 @@ def train():
         return "Malformed request", 401
 
 
-@app.route("/stats")
+@app.route("/stats", methods=["GET"])
 def stats():
     public_stats = ['users-count', 'contacts-count']
 
