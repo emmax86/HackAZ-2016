@@ -6,13 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.bramblellc.myapplication.MainActivity"
-    tools:deviceIds="wear">
+    tools:deviceIds="wear"
+    android:background="@android:color/white">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_gravity="center"
-        android:text="Start Listening"
+        android:background="@mipmap/logo"
         android:id="@+id/start_button"
         android:onClick="toggleListening"/>
 
