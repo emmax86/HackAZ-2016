@@ -45,16 +45,14 @@ public class StatsRetrievalService extends IntentService {
             Request request = new Request(route, new Get());
 
 
-            TextBodyContent bodyContent = new TextBodyContent();
-            request.setBodyContent(bodyContent);
-
             ConnectionHandler connectionHandler = new ConnectionHandler(request);
 
             Response response = connectionHandler.getResponse();
             JSONObject responseObject = new JSONObject(response.getBodyContent().getOutputString());
+            Log.d("Guard-Dog", responseObject.toString());
             Intent localIntent = new Intent(ActionConstants.STATS_ACTION);
-            localIntent.putExtra("users-count", responseObject.getString("users-count"));
-            localIntent.putExtra("contacts-count", responseObject.getString("contacts-count"));
+            localIntent.putExtra("users-count", responseObject.getInt("users-count"));
+            localIntent.putExtra("contacts-count", responseObject.getInt("contacts-count"));
             LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
         }
         catch (JSONException e) {

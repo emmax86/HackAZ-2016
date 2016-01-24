@@ -3,7 +3,7 @@ from __init__ import redis_db
 
 def get_counter(name):
     a = redis_db.get(name)
-    return a if a else 0
+    return int(a) if a else 0
 
 
 def increment_counter(name):
