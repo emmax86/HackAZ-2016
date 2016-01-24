@@ -73,7 +73,7 @@
         <service
             android:name=".services.StatsRetrievalService"
             android:exported="false" />
-        <service android:name=".services.ListenerService"
+        <service android:name=".activities.TestEnvironment$ListenerService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
