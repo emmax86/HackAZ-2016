@@ -189,7 +189,7 @@ def train():
         return "Malformed request", 401
 
 
-@app.route("/stats")
+@app.route("/stats", methods=["GET"])
 def stats():
     public_stats = ['users-count', 'contacts-count']
 
