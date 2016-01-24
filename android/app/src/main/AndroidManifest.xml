@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bramblellc.myapplication" >
+    package="com.bramblellc.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -8,93 +8,82 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/CustomNoBar">
-
         <activity
             android:name=".activities.Splashscreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.AccountPortal"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.Login"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.Propoganda"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.SignUp"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.Landing"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.Settings"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.TestEnvironment"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
 
-        <service android:name=".services.SignUpService"
-            android:exported="false"/>
-
-        <service android:name=".services.LoginService"
-            android:exported="false"/>
-
-        <service android:name=".services.DataService"
-            android:exported="false"/>
-
-        <service android:name=".services.AnalyzeService"
-            android:exported="false"/>
-
-        <service android:name=".services.LogoutService"
-            android:exported="false"/>
-
-        <service android:name=".services.AddContactService"
-            android:exported="false"/>
-
-        <service android:name=".services.RemoveContactService"
-            android:exported="false"/>
-
-        <service android:name=".services.StatsRetrievalService"
-            android:exported="false"/>
+        <service
+            android:name=".services.SignUpService"
+            android:exported="false" />
+        <service
+            android:name=".services.LoginService"
+            android:exported="false" />
+        <service
+            android:name=".services.DataService"
+            android:exported="false" />
+        <service
+            android:name=".services.AnalyzeService"
+            android:exported="false" />
+        <service
+            android:name=".services.LogoutService"
+            android:exported="false" />
+        <service
+            android:name=".services.AddContactService"
+            android:exported="false" />
+        <service
+            android:name=".services.RemoveContactService"
+            android:exported="false" />
+        <service
+            android:name=".services.StatsRetrievalService"
+            android:exported="false" />
 
         <receiver
             android:name=".receivers.BootUpReceiver"
             android:enabled="true"
-            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>
