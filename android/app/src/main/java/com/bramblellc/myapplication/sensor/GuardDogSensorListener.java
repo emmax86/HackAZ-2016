@@ -1,25 +1,12 @@
 package com.bramblellc.myapplication.sensor;
 
 import android.content.Context;
-import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
-
-import com.bramblellc.myapplication.services.ActionConstants;
-import com.getpebble.android.kit.PebbleKit;
-import com.getpebble.android.kit.util.PebbleDictionary;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.LinkedList;
-import java.util.UUID;
 
 public class GuardDogSensorListener implements SensorEventListener {
 
@@ -40,7 +27,6 @@ public class GuardDogSensorListener implements SensorEventListener {
 
     private boolean trial_in_progress;
 
-    private final UUID PEBBLE_APP_UUID = UUID.fromString("5bcd06fe-f8ba-4e9d-8168-7852a3e49dd3");
 
 
     private LinkedList<Frame> phone_frames;
@@ -53,13 +39,6 @@ public class GuardDogSensorListener implements SensorEventListener {
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         phone_frames = new LinkedList<Frame>();
         last_phone_record = 0;
-        PebbleKit.startAppOnPebble(ctx, PEBBLE_APP_UUID);
-        PebbleKit.registerReceivedDataHandler(ctx, new PebbleKit.PebbleDataReceiver(PEBBLE_APP_UUID) {
-            @Override
-            public void receiveData(Context context, int transactionId, PebbleDictionary data) {
-                Log.d("Hoober", data.getBytes(0) + "");
-            }
-        });
     }
 
     public void startListening() {
