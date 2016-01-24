@@ -30,15 +30,18 @@ html, body {
 }
 
 #fea {
-    direction: table;
-    height: 720px;
+    background: url(images/White.jpg) no-repeat center center fixed;
+    display: table;
+    height: 100%;
     position: relative;
     width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-
 }
 
-#get {
+#imp {
     background: url(images/purple-dotted-background.jpg) no-repeat center center fixed;
     display: table;
     height: 100%;
@@ -50,6 +53,18 @@ html, body {
     background-size: cover;
 }
 
+
+#get {
+    background: url(images/) no-repeat center center fixed;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 
  .navbar-brand  {
