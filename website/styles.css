@@ -22,39 +22,6 @@ html, body {
     margin: 0 auto;
 }
 
-.gd h1 {
-    font-size: 80px;
-    color: white;
-}
-.gd p {
-    font-size: 30px;
-    color: white;
-}
-
-.gd button {
-    color: #8559D6;
-}
-
-.mocks h1 {
-    font-size: 80px;
-    color: #000000;
-}
-.mocks h2 {
-    font-size: 50px;
-    color: #8559D6;
-}
-.mocks h3 {
-    font-size: 30px;
-    color: #00AFBF;
-}
-.mocks p {
-    font-size: 30px;
-    color: #8559D6;
-}
-
-.mocks button {
-    color: #8559D6;
-}
 .main-nav li {
     font-size: 20px;
 }
@@ -71,6 +38,19 @@ html, body {
     -o-background-size: cover;
     background-size: cover;
 }
+.gd h1 {
+    font-size: 80px;
+    color: white;
+}
+.gd p {
+    font-size: 30px;
+    color: white;
+}
+.gd button {
+    color: #8559D6;
+}
+
+
 
 .mocks {
     background: url(images/White.png);
@@ -78,11 +58,32 @@ html, body {
     position: relative;
     width: 100%;
 }
+.mocks h1 {
+    font-size: 80px;
+    color: #000000;
+}
+.mocks h2 {
+    font-size: 50px;
+    color: #8559D6;
+}
+.mocks h3 {
+    font-size: 35px;
+    color: #00AFBF;
+}
+.mocks p {
+    font-size: 30px;
+    color: #8559D6;
+}
+.mocks button {
+    color: #8559D6;
+}
 
-.imp {
+
+
+.fea {
     background: url(images/purple-dotted-background.jpg) no-repeat center center fixed;
     display: table;
-    height: 100%;
+    height: 80%;
     position: relative;
     width: 100%;
     -webkit-background-size: cover;
@@ -90,18 +91,105 @@ html, body {
     -o-background-size: cover;
     background-size: cover;
 }
+.fea h1 {
+    font-size: 80px;
+    color: white;
+}
+.fea h2 {
+    font-size: 60px;
+    color: white;
+}
+.fea h3 {
+    font-size: 35px;
+    color: white;
+}
+.fea button {
+    color: #8559D6;
+}
 
 
-.get {
-    background: url(images/White.jpg) no-repeat center center fixed;
+
+.stk {
+    background: url(images/world_map.png);
+    height: 550px;
+    position: relative;
+    width: 100%;
+}
+.stk h1 {
+    font-size: 100px;
+    color: #000000;
+}
+.stk h2 {
+    font-size: 40px;
+    color: #000000;
+}
+.stk h3 {
+    font-size: 30px;
+    color: #00AFBF;
+}
+.stk p {
+    font-size: 30px;
+    color: #8559D6;
+}
+.stk button {
+    color: #8559D6;
+}
+
+
+
+.tm {
+    background: url(images/team_background.jpg) no-repeat center center fixed;
     display: table;
-    height: 100%;
+    height: 70%;
     position: relative;
     width: 100%;
     -webkit-background-size: cover;
-    -moz-background-size: cover;  
+    -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+.tm h1 {
+    font-size: 80px;
+    color: white;
+}
+.tm h2 {
+    font-size: 50px;
+    color: white;
+}
+.tm h3 {
+    font-size: 35px;
+    color: white;
+}
+.tm button {
+    color: #8559D6;
+}
+
+
+
+.foot {
+    background: url(images/white.png);
+    height: 125px;
+    position: relative;
+    width: 100%;
+}
+.foot h1 {
+    font-size: 100px;
+    color: #000000;
+}
+.foot h2 {
+    font-size: 40px;
+    color: #000000;
+}
+.foot h3 {
+    font-size: 20px;
+    color: #000000;
+}
+.foot p {
+    font-size: 20px;
+    color: #000000;
+}
+.foot button {
+    color: #000000;
 }
 
 
