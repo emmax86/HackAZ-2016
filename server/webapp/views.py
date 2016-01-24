@@ -66,6 +66,20 @@ def logout():
         else:
             print "Malformed request", 401
 
+@app.route("/modify_emergency_contact", methods=["POST"])
+def add_contact():
+    obj = request.get_json(force=True)
+    if obj and obj.get("token") and obj.get("phone_number"):
+        token_elements = obj.get("token").split(":")
+        user = User.get_from_db(token_elements[0])
+        if user and verify_token(user, obj["token"]):
+            user.emergency_contact = obj["emergency_contact"])
+            user.write_to_db()
+            return json.dumps(user.emergency_contact)
+        else:
+            return "Could not verify user", 401
+    else:
+        return "Malformed request", 401
 
 @app.route("/add_contact", methods=["POST"])
 def add_contact():
@@ -79,7 +93,7 @@ def add_contact():
             increment_counter('contacts-count')
             return json.dumps(list(user.contacts))
         else:
-            return "Malformed request", 401
+            return "Could not verify user", 401
     else:
         return "Malformed request", 401
 
@@ -97,7 +111,7 @@ def remove_contact():
                 decrement_counter('contacts-count')
             return json.dumps(list(user.contacts))
         else:
-            return "Malformed request", 401
+            return "Could not verify user", 401
     else:
         return "Malformed request", 401
 
@@ -123,7 +137,7 @@ def classify():
             response_dict = {"guess": guess}
             return json.dumps(response_dict)
         else:
-            return "Malformed request", 401
+            return "Could not verify user", 401
     else:
         return "Malformed request", 401
 
