@@ -97,43 +97,7 @@ public class Settings extends Activity {
     }
 
     public void myDogsPressed(View view) {
-        new MaterialDialog.Builder(this)
-                .title("ADD OR REMOVE A GUARD DOG")
-                .positiveText("ADD")
-                .negativeText("REMOVE")
-                .neutralText("CANCEL")
-                .callback(new MaterialDialog.ButtonCallback() {
-                    @Override
-                    public void onPositive(MaterialDialog dialog) {
-                        addDog();
-                    }
-
-                    @Override
-                    public void onNegative(MaterialDialog dialog) {
-                        removeDog();
-                    }
-                })
-                .show();
-    }
-
-    public void addDog() {
-        new MaterialDialog.Builder(this)
-                .title("ADD A GUARD DOG")
-                .content("Enter the phone number of the Guard Dog you would like to add to your kennel.")
-                .positiveText("Add")
-                .negativeText("Cancel")
-                .input("", "", new MaterialDialog.InputCallback() {
-                    @Override
-                    public void onInput(MaterialDialog dialog, CharSequence input) {
-                        Intent addIntent = new Intent(Settings.this, AddContactService.class);
-                        addIntent.putExtra("phone_number", input.toString());
-                        addIntent.putExtra("token", Globals.getToken());
-                        addContactFilter = new IntentFilter(ActionConstants.ADD_CONTACT_ACTION);
-                        addContactReceiver = new AddContactReceiver();
-                        LocalBroadcastManager.getInstance(Settings.this).registerReceiver(addContactReceiver, addContactFilter);
-                        startService(addIntent);
-                    }
-                }).show();
+        removeDog();
     }
 
     public void removeDog() {
@@ -160,8 +124,8 @@ public class Settings extends Activity {
 
     public void phoneServicesPressed(View view) {
         new MaterialDialog.Builder(this)
-                .title("ADD OR REMOVE CONTACT FOR PHONE SERVICES")
-                .positiveText("ADD")
+                .title("EDIT EMERGENCY PHONE CONTACT")
+                .positiveText("EDIT")
                 .negativeText("REMOVE")
                 .neutralText("CANCEL")
                 .callback(new MaterialDialog.ButtonCallback() {
@@ -178,9 +142,9 @@ public class Settings extends Activity {
                         editor.putString("phone", null);
                         editor.apply();
                         if (contact != null)
-                            Toast.makeText(Settings.this, "Your phone service provider has been removed as your contact.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Settings.this, "Your emergency contact has been removed.", Toast.LENGTH_LONG).show();
                         else
-                            Toast.makeText(Settings.this, "There was no phone service provider to remove.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Settings.this, "There was not an emergency contact to remove.", Toast.LENGTH_LONG).show();
                     }
                 })
                 .show();
@@ -188,8 +152,8 @@ public class Settings extends Activity {
 
     public void addPhoneServiceContact() {
         new MaterialDialog.Builder(this)
-                .title("ADD A PHONE SERVICE CONTACT")
-                .content("Enter the phone number of the phone service provider you would like to add or replace as your contact.")
+                .title("EDIT EMERGENCY PHONE CONTACT")
+                .content("Enter the phone number of the emergency contact like to add or replace as your current contact with.")
                 .positiveText("Add")
                 .negativeText("Cancel")
                 .inputType(InputType.TYPE_CLASS_PHONE)

@@ -81,7 +81,7 @@ public class Landing extends Activity {
             new MaterialDialog.Builder(this)
                     .title("WELCOME")
                     .content("Let's start out by adding some Guard Dogs to your account! A Guard Dog" +
-                            " is someone that will receive alerts if you are ever determined to be in danger")
+                            " is someone that will receive text alerts if you are ever determined to be in danger")
                     .positiveText("Next")
                     .callback(new MaterialDialog.ButtonCallback() {
                         @Override
@@ -174,8 +174,8 @@ public class Landing extends Activity {
     public void emergencyContact() {
         new MaterialDialog.Builder(this)
                 .title("EMERGENCY CONTACT")
-                .content("Would you like to add an emergency contact that will be called in the " +
-                        "event of an incident?")
+                .content("Your emergency contact is the only contact that will be called in the event" +
+                        "of an incident. Would you like to add an emergency contact?" )
                 .positiveText("Yes")
                 .negativeText("No")
                 .callback(new MaterialDialog.ButtonCallback() {
@@ -195,7 +195,7 @@ public class Landing extends Activity {
     public void congrats() {
         new MaterialDialog.Builder(this)
                 .title("WELCOME TO THE PACK!")
-                .content("Thanks for downloading Guard Dog. We hope we can make you feel as safe as man's best friend.")
+                .content("Thanks for downloading Guard Dog.")
                 .positiveText("Get started")
                 .callback(new MaterialDialog.ButtonCallback() {
                     @Override
