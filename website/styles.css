@@ -55,13 +55,13 @@ html, body {
 
 
 #get {
-    background: url(images/) no-repeat center center fixed;
+    background: url(images/White.jpg) no-repeat center center fixed;
     display: table;
     height: 100%;
     position: relative;
     width: 100%;
     -webkit-background-size: cover;
-    -moz-background-size: cover;
+    -moz-background-size: cover;  
     -o-background-size: cover;
     background-size: cover;
 }
@@ -69,7 +69,7 @@ html, body {
 
  .navbar-brand  {
     position: absolute;
-    top: -5%;
+    top: -10%;
     left: 50px;
     margin-bottom: -25px !important;  /* 50% of your logo width */
     display: block;
