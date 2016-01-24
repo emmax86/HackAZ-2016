@@ -21,9 +21,23 @@ html, body {
     float: none;
     margin: 0 auto;
 }
+
+.gd h1 {
+    font-size: 80px;
+    color: white;
+}
+.gd p {
+    font-size: 30px;
+    color: white;
+}
+
+.gd button {
+    color: #8559D6;
+}
 .main-nav li {
     font-size: 20px;
 }
+
 
 .gd {
     background: url(images/triangle_background.png) no-repeat center fixed;
