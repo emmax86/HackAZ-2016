@@ -1,6 +1,5 @@
 package com.bramblellc.myapplication.activities;
 
-
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
