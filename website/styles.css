@@ -13,13 +13,34 @@ html, body {
 /* paralax shit */
 .para-section {
     padding: 50px 0;
-}
-.para-section {
     width: 100%;
 }
 
-#gd {
-    background: url(images/triangle_background.png) no-repeat center center fixed;
+/* center shit */
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.gd h1 {
+    font-size: 80px;
+    color: white;
+}
+.gd p {
+    font-size: 30px;
+    color: white;
+}
+
+.gd button {
+    color: #8559D6;
+}
+.main-nav li {
+    font-size: 20px;
+}
+
+
+.gd {
+    background: url(images/triangle_background.png) no-repeat center fixed;
     display: table;
     height: 100%;
     position: relative;
@@ -30,14 +51,14 @@ html, body {
     background-size: cover;
 }
 
-#fea {
+.fea {
     background: url(images/White.png);
     height: 1000px;
     position: relative;
     width: 100%;
 }
 
-#imp {
+.imp {
     background: url(images/purple-dotted-background.jpg) no-repeat center center fixed;
     display: table;
     height: 100%;
@@ -50,7 +71,7 @@ html, body {
 }
 
 
-#get {
+.get {
     background: url(images/White.jpg) no-repeat center center fixed;
     display: table;
     height: 100%;
